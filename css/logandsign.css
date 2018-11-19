@@ -4,6 +4,14 @@ body {
 	height: 100vh;
 	background: #DFDFDF;
 }
+
+.navbar {
+	width: 100vw;
+	position: absolute;
+	top: 0;
+	z-index: 100;
+}
+
 h1 {
 	letter-spacing: 2px;
 }
@@ -19,4 +27,9 @@ h1 span {
 .lables {
 	display: flex;
 	justify-content: space-around;  
+}
+
+footer {
+	position: absolute;
+	bottom: 0;
 }
