@@ -4,7 +4,6 @@
 html, body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  height: 3000px;
   overflow-x: hidden;
 }
 
@@ -65,7 +64,13 @@ section
     position: absolute;
     right: 0;
     top: 10px;
+    z-index: 10;
 
+}
+
+#navbarNavDropdown
+{
+  z-index: 10;
 }
 
 .logo {
@@ -121,7 +126,7 @@ section
  footer {
     background: #333333;
     color: #fff;
-    position: fixed;
+    position: relative;
     width: 100%;
     bottom: 0;
  }
@@ -130,16 +135,13 @@ section
  {
     background: url( "../images/hostel_image_1.jpg");
     background-attachment: fixed;
-    height: 500px;
     width: 100%;
-    line-height: 250px;
     text-align: center;
  }
 
  .banner-label
  {
     font-family: 'Satisfy', cursive;
-    font-size: 75px;
     color: white;
     font-weight: bold;
     padding: 3%;
@@ -149,7 +151,6 @@ section
 
  .banner-input
  {
-  width: 50%;
   height: 30px;
   margin:auto;
   text-align: center;
@@ -177,7 +178,6 @@ section
 
  .text-block
  {
-  font-size: 30px;
   font-weight: bold;
   color: grey;
   padding: 30px;
