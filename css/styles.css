@@ -164,7 +164,7 @@ section
  .fa-crosshairs:hover
  {
   cursor: pointer;
-  color: blue;
+  color: black;
   transform: scale(1.25, 1.25);
  }
 
