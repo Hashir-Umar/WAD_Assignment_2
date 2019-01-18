@@ -11,11 +11,11 @@
     <meta name="author" content="Rana Umair">
     <title>Reset your password</title>
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/logandsign.css">
+    <link rel="stylesheet" href="../src/css/bootstrap.css">
+    <link rel="stylesheet" href="../src/css/styles.css">
+    <link rel="stylesheet" href="../src/css/logandsign.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link rel="shortcut icon" href="../images/icon.ico" />
+    <link rel="shortcut icon" href="../src/images/icon.ico" />
 
 </head>
 <body>
