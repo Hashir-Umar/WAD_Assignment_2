@@ -71,7 +71,7 @@
           <div class="row text-center mb-2">
             <div class="col-sm-12 col-md-6 col-lg-4 p-0">
                 <div class="img-box">
-                    <img src="../images/team/hashir.jpg" alt="Hashir" width="220px" height="230px">
+                    <img src="../src/images/team/hashir.jpg" alt="Hashir" width="220px" height="230px">
                     <div class="info">Hashir Umar <span>Team Leader</span> </div> 
                     <div class="more-info">
                         <a href="#"> <i class="fab fa-google-plus-square"></i> </a> 
@@ -83,7 +83,7 @@
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 p-0">
                 <div class="img-box">
-                    <img src="../images/team/wisaam.jfif" alt="Wisaam" width="220px" height="230px">
+                    <img src="../src/images/team/wisaam.jfif" alt="Wisaam" width="220px" height="230px">
                     <div class="info">Wisaam Arif <span>Developer</span> </div>   
                     <div class="more-info">
                        <a href="#"> <i class="fab fa-google-plus-square"></i> </a> 
@@ -94,7 +94,7 @@
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 p-0">
                 <div class="img-box">
-                    <img src="../images/team/sufyan.jfif" alt="Sufyan" width="220px" height="230px">
+                    <img src="../src/images/team/sufyan.jfif" alt="Sufyan" width="220px" height="230px">
                     <div class="info">Sufyan Ashraf <span>Developer</span> </div>
                     <div class="more-info">
                         <a href="#"> <i class="fab fa-google-plus-square"></i> </a> 
@@ -106,7 +106,7 @@
           
               <div class="col-sm-12 col-md-6 col-lg-4 p-0">
                   <div class="img-box">
-                      <img src="../images/team/umair.jpeg" alt="Umair" width="220px" height="230px">
+                      <img src="../src/images/team/umair.jpeg" alt="Umair" width="220px" height="230px">
                       <div class="info">Rana Umair <span>Developer</span> </div>
                       <div class="more-info">
                           <a href="#"> <i class="fab fa-google-plus-square"></i> </a> 
@@ -117,7 +117,7 @@
               </div>
               <div class="col-sm-12 col-md-6 col-lg-4 p-0">
                   <div class="img-box">
-                      <img src="../images/team/noman.jpg" alt="Noman" width="220px" height="230px">
+                      <img src="../src/images/team/noman.jpg" alt="Noman" width="220px" height="230px">
                       <div class="info">Noman Afzal <span>Developer</span> </div>           
                       <div class="more-info">
                           <a href="#"> <i class="fab fa-google-plus-square"></i> </a> 

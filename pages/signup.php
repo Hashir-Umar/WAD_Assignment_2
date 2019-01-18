@@ -79,9 +79,9 @@
                     </div>
                     <button id=btn type="submit" class="btn btn-block btn-outline-dark mb-1 mb-md-2"> Register </button>
                     <div class="lables">
-                        <p> <a href="login.html"> <i class="fas fa-sign-in-alt"></i> Already Have An Account?</a></p>
+                        <p> <a href="login.php"> <i class="fas fa-sign-in-alt"></i> Already Have An Account?</a></p>
                     </div>
-                    <a href="../index.html"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back to Home</a>
+                    <a href="../index.php"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back to Home</a>
                 </div>
             </div> 
          </form>

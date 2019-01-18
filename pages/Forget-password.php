@@ -28,7 +28,7 @@
 
 <div class="container">
     <h2 class="text-center my-4"> Reset your password </h2>
-    <form action="../index.html" method="post">
+    <form action="../index.php" method="post">
         <div class="row">
             <div class="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
                 <div class="input-group mb-2">
@@ -55,7 +55,7 @@
          
         <div class="row mt-5">
             <div class="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
-                <a href="../index.html"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back to Home</a>
+                <a href="../index.php"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back to Home</a>
             </div>
         </div> 
     </form>

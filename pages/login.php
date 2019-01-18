@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../src/css/styles.css">
     <link rel="stylesheet" href="../src/css/logandsign.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link rel="shortcut icon" href="../src/images/icon.ico" />
+    <link rel="shortcut icon" href="../images/icon.ico" />
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins" rel="stylesheet">
     
 </head>
@@ -47,10 +47,10 @@
                     </div>
                     <button id=btn type="submit" class="btn btn-block btn-outline-dark  mb-2"> Login </button>
                     <div class="lables mb-2">
-                        <p> <a href="forget-password.html"> <i class="fas fa-key"></i> Forgot your password?</a></p>
-                        <p> <a href="signup.html"> <i class="fas fa-sign-in-alt"></i> Signup for free</a></p>
+                        <p> <a href="forget-password.php"> <i class="fas fa-key"></i> Forgot your password?</a></p>
+                        <p> <a href="signup.php"> <i class="fas fa-sign-in-alt"></i> Signup for free</a></p>
                     </div>
-                    <a href="../index.html"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back to Home</a>
+                    <a href="../index.php"><i class="fas fa-arrow-left"></i>&nbsp;&nbsp;Back to Home</a>
                 </div>
             </div>
         

@@ -37,7 +37,7 @@
 		  <span class="logo d-none d-md-inline">HOSTEL</span>
 		  <ul class="navbar-nav mx-auto">
 			<li class="nav-item">
-			  <a class="nav-link active" href="home.php"><i class="fas fa-home"></i> &nbsp; Home</a>
+			  <a class="nav-link active" href="index.php"><i class="fas fa-home"></i> &nbsp; Home</a>
 			</li>
 			<li class="nav-item">
 			  <a class="nav-link" href="pages/login.php"> <i class="fa fa-plus"></i> &nbsp; Add Your Hostel</a>
