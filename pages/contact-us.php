@@ -1,54 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Find the Best Hostel for you to stay">
-    <meta name="keywords" content="Hostels, hostel, university, hotel">
-    <meta name="author" content="Wisaam Arif">
-    <meta name="author" content="Hashir Umar">
-    <meta name="author" content="Sufyan Ashraf">
-    <meta name="author" content="Noman Afzal">
-    <meta name="author" content="Rana Umair">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">  
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link rel="stylesheet" href="../src/css/styles.css">
-    <link rel="stylesheet" href="../src/css/logandsign.css">
-
-    
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins" rel="stylesheet">
-    <link rel="shortcut icon" href="../images/icon.ico" />
-    
-    <title>Contact US</title>
-
-</head>
+<?php include("../config.php");?>
+<?php include_once("../includes/header.php"); ?>
 <body> 
 
-  <nav class="navbar navbar-expand-md">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="wrapper">
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <span class="logo d-none d-md-inline">HOSTEL</span>
-          <ul class="navbar-nav mx-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="../index.php"><i class="fas fa-home"></i> &nbsp; Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./login.php"> <i class="fa fa-plus"></i> &nbsp; Add Your Hostel</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./about-us.php"><i class="fa fa-user"></i> &nbsp; Meet Our Members</a>
-            </li>
-            <li class="nav-item active">
-              <a href="./contact-us.php" class="nav-link"> <i class="fas fa-envelope"></i> &nbsp; Contact Us</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <?php include_once("../includes/navbar.php"); ?>
 
     <div class="info-text d-md-none">
       <h4>Contact Us</h4>
@@ -98,9 +52,5 @@
       </div>
   </footer>
 	
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    
-</body>
-</html>
+
+  <?php include_once("../includes/footer.php"); ?>

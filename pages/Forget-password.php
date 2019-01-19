@@ -1,23 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Find the Best Hostel for you to stay">
-    <meta name="keywords" content="Hostels, hostel, university, hotel">
-    <meta name="author" content="Wisaam Arif">
-    <meta name="author" content="Hashir Umar">
-    <meta name="author" content="Sufyan Ashraf">
-    <meta name="author" content="Noman Afzal">
-    <meta name="author" content="Rana Umair">
-    <title>Reset your password</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="stylesheet" href="../src/css/bootstrap.css">
-    <link rel="stylesheet" href="../src/css/styles.css">
-    <link rel="stylesheet" href="../src/css/logandsign.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    <link rel="shortcut icon" href="../src/images/icon.ico" />
-
-</head>
+<?php include("../config.php");?>
+<?php include_once("../includes/header.php"); ?>
 <body>
 
     <nav class="navbar navbar-expand-md py-4">
@@ -67,5 +49,5 @@
         </div>
     </footer>
 
-</body>
-</html>
+
+<?php include_once("../includes/footer.php"); ?>
