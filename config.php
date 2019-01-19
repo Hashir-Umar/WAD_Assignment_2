@@ -9,29 +9,38 @@
     $page_reference = substr($page_reference, 0, strpos($page_reference, '/'));
 
 	switch ($_SERVER["SCRIPT_NAME"]) {
-		case "$page_reference/about.php":
+		case "/".$page_reference."/pages/about-us.php":	
 			$CURRENT_PAGE = "About"; 
 			$PAGE_TITLE = "About Us";
             break;
-        case "/$page_reference/admin/admin-panel.php":
+        case "/".$page_reference."/admin/admin-panel.php":
 			$CURRENT_PAGE = "Admin Panel"; 
 			$PAGE_TITLE = "Admin Panel";
             break;
-        case "/$page_reference/login.php":
+        case "/".$page_reference."/pages/login.php":
 			$CURRENT_PAGE = "Login"; 
 			$PAGE_TITLE = "Login";
             break;
-        case "/$page_reference/signup.php":
+        case "/".$page_reference."/pages/signup.php":
 			$CURRENT_PAGE = "Signup"; 
 			$PAGE_TITLE = "Signup";
 			break;
-		case "/$page_reference/contact-us.php":
+		case "/".$page_reference."/pages/forgot-password.php":
+			$CURRENT_PAGE = "Forgot Password"; 
+			$PAGE_TITLE = "Forgot Password";
+			break;
+		case "/".$page_reference."/pages/contact-us.php":
 			$CURRENT_PAGE = "Contact"; 
 			$PAGE_TITLE = "Contact Us";
 			break;
+		case "/".$page_reference."/index.php":
+			$CURRENT_PAGE = "Index"; 
+			$PAGE_TITLE = "Home Page";
+			break;
 		default:
-			$CURRENT_PAGE = "Index";
-            $PAGE_TITLE = "Home Page!";
-        break;
-    }
+			$CURRENT_PAGE = "Hostels Website";
+			$PAGE_TITLE = "Hostels Website";
+			break;
+	}
+	
 ?>
