@@ -4,7 +4,7 @@
     </button>
     <div class="wrapper">
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <span class="logo d-none d-md-inline">HOSTEL</span>
+        <a href="<?php echo $domain.$root_folder ?>"><span class="logo d-none d-md-inline">HOSTEL</span></a>
         <ul class="navbar-nav mx-auto">
         <li class="nav-item">
             <a class="nav-link <?php if($CURRENT_PAGE == "Index") echo " active"; ?>" href="<?php echo $domain.$root_folder."index.php"; ?>"><i class="fas fa-home"></i> &nbsp; Home</a>
