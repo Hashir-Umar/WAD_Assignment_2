@@ -53,13 +53,13 @@
     <section class="wrapper">
           <div class="row">
             <div class="font-28 text-block d-none d-lg-block col-10 offset-1">
-              <a href="pages/signup.html" class="custom-link">Register Now For Free And Add Your Own Hostel &nbsp&nbsp <img alt="Register Now" height="70" src="src/images/location_vector.png"></a><br>OR
+              <a href="pages/signup.php" class="custom-link">Register Now For Free And Add Your Own Hostel &nbsp&nbsp <img alt="Register Now" height="70" src="src/images/location_vector.png"></a><br>OR
             </div>
             <div class="font-15 text-block d-none d-sm-block d-lg-none offset-0 col-12">
-              <a href="pages/signup.html" class="custom-link">Register Now For Free And Add Your Own Hostel &nbsp&nbsp <img alt="Register Now" height="60" src="src/images/location_vector.png"></a><br>OR
+              <a href="pages/signup.php" class="custom-link">Register Now For Free And Add Your Own Hostel &nbsp&nbsp <img alt="Register Now" height="60" src="src/images/location_vector.png"></a><br>OR
             </div>
             <div class="font-13 text-block d-block d-sm-none offset-0 col-12">
-              <a href="pages/signup.html" class="custom-link">Register Now For Free And Add Your Own Hostel &nbsp&nbsp <img alt="Register Now" height="45" src="src/images/location_vector.png"></a><br>OR
+              <a href="pages/signup.php" class="custom-link">Register Now For Free And Add Your Own Hostel &nbsp&nbsp <img alt="Register Now" height="45" src="src/images/location_vector.png"></a><br>OR
             </div>
           </div>
           <div class = "text-block col-10 offset-1">
