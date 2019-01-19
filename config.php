@@ -37,6 +37,10 @@
 			$CURRENT_PAGE = "Index"; 
 			$PAGE_TITLE = "Home Page";
 			break;
+		case "/".$page_reference."/pages/add-hostel.php":
+			$CURRENT_PAGE = "Add Hostel"; 
+			$PAGE_TITLE = "Add Your Hostel";
+			break;
 		default:
 			$CURRENT_PAGE = "Hostels Website";
 			$PAGE_TITLE = "Hostels Website";
