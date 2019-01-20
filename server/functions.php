@@ -97,20 +97,18 @@
     function uploadHostel($hostel_name, $hostel_city, $hostel_address, $hostel_rooms, $hostel_extras, $hostel_image_name, $hostel_image_temp_name)
     {
         $hostel_owner = $_SESSION['user_id'];
-        $uploaddir = 'pages/';
+        $hostel_id = $conn->insert_id;
+        $uploaddir = 'src/hostel_images/'.$hostel_id.'_'.$hostel_image_name;
 
         global $conn;
-        $sql = "INSERT INTO `hostels`(`hostel_name`, `hostel_city`, `hostel_address`, `hostel_rooms`, `hostel_extras`, `hostel_owner`, `hostel_img`) VALUES ('".$hostel_name."', '".$hostel_city."', '".$hostel_address."', '".$hostel_rooms."', '".$hostel_extras."', '".$hostel_owner."', '".$hostel_image_name."');";
+        $sql = "INSERT INTO `hostels`(`hostel_name`, `hostel_city`, `hostel_address`, `hostel_rooms`, `hostel_extras`, `hostel_owner`, `hostel_img`) VALUES ('".$hostel_name."', '".$hostel_city."', '".$hostel_address."', '".$hostel_rooms."', '".$hostel_extras."', '".$hostel_owner."', '".$uploaddir."');";
         $result = mysqli_query($conn,$sql);
         if(!$result) {
             die("Error description: " . mysqli_error($conn));
         }
         
-        $hostel_id = $conn->insert_id;
-        
-        $uploadfile = $uploaddir.$hostel_id."_".$hostel_image_name;
-        if (move_uploaded_file($hostel_image_temp_name, $uploadfile)) {
-            $_SESSION['error_msg'] = "your hostel has successfully added";
+        if (move_uploaded_file($hostel_image_temp_name, '../'.$uploaddir)) {
+            $_SESSION['error_msg'] = "Your hostel has been successfully added";
             header("Location: ../pages/add-hostel.php");
         } else {
             $_SESSION['error_msg'] = "Error occured while uploading image but data has been uploaded to table";

@@ -11,7 +11,6 @@
     $sql = "SELECT * FROM hostels WHERE hostel_city='$city'";
     $result = mysqli_query($conn, $sql);
     $num_results = mysqli_num_rows($result);
-    $assoc = mysqli_fetch_assoc($result);
 
     $PAGE_TITLE = $city;
 ?>
@@ -51,6 +50,7 @@
             <?php
                 for ($i = 0; $i < $num_results; $i++)
                 {
+                    $assoc = mysqli_fetch_assoc($result);
                     $name = $assoc['hostel_name'];
                     $image = "../".$assoc['hostel_img'];
                     $hostel_id = $assoc['hostel_id'];
