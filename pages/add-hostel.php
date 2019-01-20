@@ -8,7 +8,7 @@
         <h1 class="text-center my-4"> Add Your Hostel</h1>
          <form name = "uploadHostel" action = "uploadHostel.php" method = "POST" enctype = "multipart/form-data">
             <div class="row">
-                <div class="col-sm-12 offset-md-3 col-md-6 col-lg-6">
+                <div class="col-12 offset-md-2 col-md-8 col-lg-/">
                     <div class="input-group mb-1 mb-md-2">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-file-signature"></i></div>
@@ -44,9 +44,7 @@
 
                     <textarea name="extras" placeholder="Additional Facilities" class="col-12" rows="5"></textarea>
                     
-                    <div class="input-group mb-1 mb-md-2 input-group-prepend">
-                        <div class="input-group-text"><i class="far fa-images"></i>&nbsp Select an image<input name = "user_file" id = "file" class = "btn" type = "file" required></div>
-                    </div>
+                    <div class="input-group-text"><i class="far fa-images"></i>&nbsp Select an image<input name = "user_file" id = "file" class = "btn" type = "file" required></div>
                     
                     <button id=btn type="submit" class="btn btn-block btn-outline-dark mb-1 mb-md-2"> Add Hostel </button>
                     
