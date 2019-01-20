@@ -1,6 +1,4 @@
 <?php include("../config.php");?>
-<?php include_once("../includes/header.php");
-      include_once("../server/functions.php") ?>
 <?php
     $city;
     if (isset($_GET["city"]))
@@ -14,7 +12,11 @@
     $result = mysqli_query($conn, $sql);
     $num_results = mysqli_num_rows($result);
     $assoc = mysqli_fetch_assoc($result);
+
+    $PAGE_TITLE = $city;
 ?>
+<?php include_once("../includes/header.php");
+      include_once("../server/functions.php"); ?>
 <body>
 
     <?php include_once("../includes/navbar.php"); ?>

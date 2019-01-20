@@ -1,6 +1,5 @@
-<?php include("../config.php");?>
-<?php include_once("../includes/header.php");
-      include_once("../server/functions.php") ?>
+<?php include("../config.php");
+        include_once("../server/functions.php"); ?>
 <?php
     $id;
     if (isset($_GET["hostel_id"]))
@@ -19,8 +18,11 @@
 
     $assoc = mysqli_fetch_assoc($result);
 
-    $images = getHostelImagesArray($conn, $id)
+    $images = getHostelImagesArray($conn, $id);
+
+    $PAGE_TITLE = $assoc['hostel_name'];
 ?>
+<?php include_once("../includes/header.php");?>
 <body>
 
     <?php include_once("../includes/navbar.php"); ?>
