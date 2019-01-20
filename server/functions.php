@@ -63,6 +63,10 @@
 
     function validateAndUpldoad($hostel_name, $hostel_city, $hostel_address, $hostel_rooms, $hostel_extras, $hostel_image_name, $hostel_image_temp_name)
     {
+		$hostel_name_regex = '/^(?=[a-z]{2})(?=.{4,26})(?=[^.]*\.?[^.]*$)(?=[^_]*_?[^_]*$)[\w.]+$/iD';
+        $hostel_city_regex = '/Lahore|Islamabad|Karachi|Faisalabad|Peshawar|Quetta/';
+        $hostel_address_regex = '/^[a-zA-Z]([a-zA-Z-]+\s)+\d{1,4}$/';
+		
         if($hostel_name == ""
         || $hostel_city == ""
         || $hostel_address == ""
@@ -109,7 +113,7 @@
             $_SESSION['error_msg'] = "your hostel has successfully added";
             header("Location: ../pages/add-hostel.php");
         } else {
-            $_SESSION['error_msg'] = "Error occured while uploading data";
+            $_SESSION['error_msg'] = "Error occured while uploading image but data has been uploaded to table";
             header("Location: ../pages/add-hostel.php");
         }
     }

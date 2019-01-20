@@ -33,7 +33,7 @@
         <h1 class="text-center my-4"> Add Your Hostel</h1>
          <form name = "uploadHostel" action = "<?php echo $domain.$root_folder."server/validateForms.php"; ?>" method = "POST" enctype = "multipart/form-data">
             <div class="row">
-                <div class="col-sm-12 offset-md-2 col-md-8 col-lg-6">
+                <div class="col-12 offset-md-2 col-md-8 col-lg-/">
                     <div class="input-group mb-1 mb-md-2">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fas fa-file-signature"></i></div>
@@ -69,10 +69,9 @@
 
                     <textarea name="hostel_extras" placeholder="Additional Facilities" class="col-12" rows="5"></textarea>
                     
-                    <div class="input-group mb-1 mb-md-2 input-group-prepend">
-                        <!-- <input type="hidden" name="MAX_FILE_SIZE" value="30000" /> -->
-                        <div class="input-group-text"><i class="far fa-images"></i>&nbsp Select an image<input name = "user_file" id = "file" class = "btn" type = "file" ></div>
-                    </div>
+                     <!-- <input type="hidden" name="MAX_FILE_SIZE" value="30000" /> -->
+                    <div class="input-group-text mb-2"><i class="far fa-images"></i>&nbsp Select an image<input name = "user_file" id = "file" class = "btn" type = "file" ></div>
+                   
                     
                     <button type="submit" name="uploadHostel" class="btn btn-block btn-outline-dark mb-1 mb-md-2"> Add Hostel </button>
                     
