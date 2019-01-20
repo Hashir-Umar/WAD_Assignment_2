@@ -1,5 +1,6 @@
 <?php include("../config.php");?>
 <?php include_once("../includes/header.php"); ?>
+<?php session_start(); ?>
 <body style="height: 100vh; background: #F9F9F9;" class="d-flex justify-content-center align-items-center">
 
 <div class="container">

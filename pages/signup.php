@@ -1,5 +1,6 @@
 ﻿<?php include("../config.php");?>
 <?php include_once("../includes/header.php"); ?>
+<?php session_start(); ?>
 
  <?php
     require_once "../server/database_connection.php";

@@ -1,6 +1,8 @@
+<?php session_start(); ?>
+
+<!-- dummy id -->
+<?php $_SESSION['user_id'] = 1; ?>
 <?php
-    session_start();
-    $_SESSION['user_id'] = 1;
     include_once("functions.php");
     require_once "database_connection.php";
     
@@ -70,7 +72,7 @@
             $uploaddir = 'src/hostel_images/'.$hostel_id.'_'.$hostel_image_name;
 
             global $conn;
-            $sql = "INSERT INTO `hostels`(`hostel_name`, `hostel_city`, `hostel_address`, `hostel_rooms`, `hostel_extras`, `hostel_owner`, `hostel_img`) VALUES ('".$hostel_name."', '".$hostel_city."', '".$hostel_address."', '".$hostel_rooms."', '".$hostel_extras."', '".$hostel_owner."', '".$uploaddir."');";
+            $sql = "INSERT INTO `pending_hostels`(`hostel_name`, `hostel_city`, `hostel_address`, `hostel_rooms`, `hostel_extras`, `hostel_owner`, `hostel_img`) VALUES ('".$hostel_name."', '".$hostel_city."', '".$hostel_address."', '".$hostel_rooms."', '".$hostel_extras."', '".$hostel_owner."', '".$uploaddir."');";
             $result = mysqli_query($conn,$sql);
             if(!$result) {
                 die("Error description: " . mysqli_error($conn));

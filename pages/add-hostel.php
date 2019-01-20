@@ -1,12 +1,12 @@
 <?php include("../config.php");?>
 <?php include_once("../includes/header.php"); ?>
+<?php session_start(); ?>
 <body>
 
     <?php include_once("../includes/navbar.php"); ?>
 
     <div class="container">
         <?php
-            session_start();
             if(isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']))
             {
                 $msg = $_SESSION['error_msg'];
