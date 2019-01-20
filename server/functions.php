@@ -61,6 +61,21 @@
 	    return $result;
 	}
 
+	function getHostelContactPending($conn, $id)
+	{
+		$sql = "SELECT hostel_owner FROM pending_hostels WHERE hostel_id='$id'";
+	    $result = mysqli_query($conn, $sql);
+	    $count = mysqli_num_rows($result);
+	    if ($count == 0)
+	    	return "";
+	    $ownerid = mysqli_fetch_assoc($result)['hostel_owner'];
+
+	    $sql = "SELECT user_email FROM users WHERE user_id='$ownerid'";
+	    $result = mysqli_fetch_assoc(mysqli_query($conn, $sql))['user_email'];
+
+	    return $result;
+	}
+
 	function getNewHostelID($conn)
 	{
 		$sql = "SELECT hostel_id FROM hostels ORDER BY hostel_id DESC LIMIT 1;";
