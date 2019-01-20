@@ -21,21 +21,7 @@
 
 	if(!mysqli_query($conn, $sql))
 		die("Error description: " . mysqli_error($conn));
-	else 
-	{
-		$sql = "INSERT INTO `users`
-		( user_email, user_password, user_account_type )
-		VALUES
-		('user@test.com', '123', 1), 
-		('user1@test.com', '123', 1), 
-		('user2@test.com', '123', 1),
-		('owner@test.com', '123', 3);";
 
-		$result = mysqli_query($conn, $sql);
-		if(!$result) {
-			die("Error description: " . mysqli_error($conn));
-		} 
-	}
 	// table to store user pending users data
 	$sql = 'CREATE TABLE IF NOT EXISTS `pending_users` (
 		`user_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -92,20 +78,6 @@
 	  );';
 	if(!mysqli_query($conn, $sql))
 		die("Error description: " . mysqli_error($conn));
-	else
-	{
-		$sql = "INSERT INTO `pending_hostels`
-			( hostel_name, hostel_city, hostel_address, hostel_rooms, hostel_extras, hostel_owner, hostel_img )
-			VALUES
-			('hostel1', 'Lahore', 'Johar town 12', '12', 'AC, fridge', '2', 'src/hostel_images/1_1.jpg'), 
-			('hostel2', 'Islamabad', 'Johar town 92', '9', 'AC, fridge', '2', 'src/hostel_images/1_2.jpg'), 
-			('hostel3', 'Karachi', 'Johar town 102', '3', 'AC, fridge', '2', 'src/hostel_images/1_3.jpg');";
-
-			$result = mysqli_query($conn, $sql);
-			if(!$result) {
-				die("Error description: " . mysqli_error($conn));
-			} 
-	}
 
 	// table to store universities and their address
 	$sql = 'CREATE TABLE IF NOT EXISTS `universities` (
@@ -138,5 +110,56 @@
 	if(!mysqli_query($conn, $sql))
 		die("Error description: " . mysqli_error($conn));
 	
+	////////////////////////////////////// adding dummy data ///////////////////////////////////////
+	
+	include_once("functions.php");
+	// adding dummy data to users table
+	if(isTableEmpty($conn, 'users'))
+	{
+		$sql = "INSERT INTO `users`
+		( user_email, user_password, user_account_type )
+		VALUES
+		('user@test.com', '123', 1), 
+		('user1@test.com', '123', 1), 
+		('user2@test.com', '123', 1),
+		('owner@test.com', '123', 3);";
+
+		if(!mysqli_query($conn, $sql)) {
+			die("Error description: " . mysqli_error($conn));
+		} 
+	}
+
+	// adding dummy data to pending hostel table
+	if(isTableEmpty($conn, 'pending_hostels'))
+	{
+		$sql = "INSERT INTO `pending_hostels`
+			( hostel_name, hostel_city, hostel_address, hostel_rooms, hostel_extras, hostel_owner, hostel_img )
+			VALUES
+			('hostel1', 'Lahore', 'Johar town 12', '12', 'AC, fridge', '2', 'src/hostel_images/1_1.jpg'), 
+			('hostel2', 'Islamabad', 'Johar town 92', '9', 'AC, fridge', '2', 'src/hostel_images/1_2.jpg'), 
+			('hostel3', 'Karachi', 'Johar town 102', '3', 'AC, fridge', '2', 'src/hostel_images/1_3.jpg');";
+
+			$result = mysqli_query($conn, $sql);
+			if(!$result) {
+				die("Error description: " . mysqli_error($conn));
+			} 
+	}
+
+	// adding dummy data to hostel table
+	if(isTableEmpty($conn, 'hostels'))
+	{
+		$sql = "INSERT INTO `hostels`
+			( hostel_name, hostel_city, hostel_address, hostel_rooms, hostel_extras, hostel_owner, hostel_img )
+			VALUES
+			('hostel4', 'Peshawar', 'Murree town 53', '12', 'Double bed', '2', 'src/hostel_images/1_4.jpg'), 
+			('hostel5', 'Peshawar', 'Murree town 345', '9', 'heater, Double bed', '2', 'src/hostel_images/1_5.jpg'), 
+			('hostel6', 'Quetta', 'Murree town 123', '3', 'AC, heater, Double bed', '2', 'src/hostel_images/1_6.jpg');";
+
+			$result = mysqli_query($conn, $sql);
+			if(!$result) {
+				die("Error description: " . mysqli_error($conn));
+			} 
+	}
+
 	mysqli_close($conn);
 ?>

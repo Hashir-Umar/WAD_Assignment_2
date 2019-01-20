@@ -69,4 +69,18 @@
 			return 0;
 		return mysqli_fetch_assoc($result)['hostel_id']+1;
 	}
+
+	function isTableEmpty($conn, $table_name)
+	{
+		$sql = "select * from ".$table_name;
+		$result = mysqli_query($conn, $sql);
+		if(!$result)
+			die("Error description: " . mysqli_error($conn));
+	
+		if(mysqli_num_rows($result) == 0)
+			return 1;
+		
+		return 0;
+	}
+
 ?>

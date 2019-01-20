@@ -87,6 +87,6 @@
     </form>
 </div>
 
-<script src="../src/js/validationForm.js"></script>
+
 </body>
 <?php include_once("../includes/footer.php"); ?>

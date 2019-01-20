@@ -76,7 +76,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <button  onclick = "validate();" id = "btn" type="submit" name = "submit" class="btn btn-md btn-dark px-4"> Register </button>
                             <div class="mb-2"> 
-                                <input type="checkbox" name="user_account_type" value="1"> Are you an owner of Hostels?<br>
+                                <input type="checkbox" name="user_account_type" value="1"> Check this box to add Hostels?<br>
                             </div>                
                         </div>      
                     </div>
@@ -89,7 +89,6 @@
     </form>
 </div>
 
-<script src="../src/js/validationForm.js"></script>
 </body>
 
 
