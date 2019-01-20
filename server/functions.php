@@ -61,4 +61,56 @@
 	    return $result;
 	}
 
+    function validateAndUpldoad($hostel_name, $hostel_city, $hostel_address, $hostel_rooms, $hostel_extras, $hostel_image_name, $hostel_image_temp_name)
+    {
+        if($hostel_name == ""
+        || $hostel_city == ""
+        || $hostel_address == ""
+        || $hostel_rooms == ""
+        || $hostel_image_name == "") {
+            $_SESSION['error_msg'] = "You can not leave any feild empty";
+            header("Location: ../pages/add-hostel.php");
+            die();
+        }
+
+        if (!preg_match($hostel_name_regex,  $hostel_name))  {
+            $_SESSION['error_msg'] = "Hostel name not valid";
+            header("Location: ../pages/add-hostel.php");
+        }
+        else if (!preg_match($hostel_city_regex,  $hostel_city))  {
+            $_SESSION['error_msg'] = "City name not valid";
+            header("Location: ../pages/add-hostel.php");
+        }
+        else if (!preg_match($hostel_address_regex,  $hostel_address))  {
+            $_SESSION['error_msg'] = "Address not valid";
+            header("Location: ../pages/add-hostel.php");
+        }
+        else {
+            uploadHostel($hostel_name, $hostel_city, $hostel_address, $hostel_rooms, $hostel_extras, $hostel_image_name, $hostel_image_temp_name);
+        }
+    }
+
+    function uploadHostel($hostel_name, $hostel_city, $hostel_address, $hostel_rooms, $hostel_extras, $hostel_image_name, $hostel_image_temp_name)
+    {
+        $hostel_owner = $_SESSION['user_id'];
+        $uploaddir = 'pages/';
+
+        global $conn;
+        $sql = "INSERT INTO `hostels`(`hostel_name`, `hostel_city`, `hostel_address`, `hostel_rooms`, `hostel_extras`, `hostel_owner`, `hostel_img`) VALUES ('".$hostel_name."', '".$hostel_city."', '".$hostel_address."', '".$hostel_rooms."', '".$hostel_extras."', '".$hostel_owner."', '".$hostel_image_name."');";
+        $result = mysqli_query($conn,$sql);
+        if(!$result) {
+            die("Error description: " . mysqli_error($conn));
+        }
+        
+        $hostel_id = $conn->insert_id;
+        
+        $uploadfile = $uploaddir.$hostel_id."_".$hostel_image_name;
+        if (move_uploaded_file($hostel_image_temp_name, $uploadfile)) {
+            $_SESSION['error_msg'] = "your hostel has successfully added";
+            header("Location: ../pages/add-hostel.php");
+        } else {
+            $_SESSION['error_msg'] = "Error occured while uploading data";
+            header("Location: ../pages/add-hostel.php");
+        }
+    }
 ?>
