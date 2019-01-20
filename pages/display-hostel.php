@@ -1,5 +1,6 @@
 <?php include("../config.php");?>
-<?php include_once("../includes/header.php"); ?>
+<?php include_once("../includes/header.php");
+      include_once("../server/functions.php") ?>
 <?php
     $city;
     if (isset($_GET["city"]))
@@ -51,17 +52,14 @@
                     $name = $assoc['hostel_name'];
                     $image = "../".$assoc['hostel_img'];
                     $hostel_id = $assoc['hostel_id'];
+                    $rating = $assoc['hostel_rating'];
+                    $link = "display-hostel-data.php?hostel_id=$hostel_id";
 
-                    echo "<div class='text-center margin-top-10 col-sm-6 col-12 col-md-4'><div class='image-holder'><img alt='$name' class='img-fluid image-block' src='$image'></div><div class='font-15 text-block padding-10'> $name </div></div>";
+                    $stars = getStarsString($rating, 5);
+
+                    echo "<div class='text-center margin-top-10 col-sm-6 col-12 col-md-4'><div class='image-holder'><a href = '$link'><img alt='$name' class='img-fluid image-block' src='$image'></a></div><div class='font-15 text-block padding-10'> $name <br> Rating: $rating $stars</div></div>";
                 }
             ?>
-            <!--<div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><img alt="hostel_image" class="img-fluid image-block" src="../src/hostel_images/1_1.jpg"></div><div class="font-15 text-block padding-10"> Name </div></div>
-            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><img alt="hostel_image" class="img-fluid image-block" src="../src/hostel_images/1_1.jpg"></div><div class="text-block font-15 padding-10"> Name </div></div>
-            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><img alt="hostel_image" class="img-fluid image-block" src="../src/hostel_images/1_1.jpg"></div><div class="text-block font-15 padding-10"> Name </div></div>
-            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><img alt="hostel_image" class="img-fluid image-block" src="../src/hostel_images/1_1.jpg"></div><div class="text-block font-15 padding-10"> Name </div></div>
-            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><img alt="hostel_image" class="img-fluid image-block" src="../src/hostel_images/1_1.jpg"></div><div class="text-block font-15 padding-10"> Name </div></div>
-            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><img alt="hostel_image" class="img-fluid image-block" src="../src/hostel_images/1_1.jpg"></div><div class="text-block font-15 padding-10"> Name </div></div>
-            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><img alt="hostel_image" class="img-fluid image-block" src="../src/hostel_images/1_1.jpg"></div><div class="text-block font-15 padding-10"> Name </div></div> -->
         </div>
 
      </div>

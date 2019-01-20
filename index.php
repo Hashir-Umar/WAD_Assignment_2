@@ -66,12 +66,12 @@
             Find A Hostel In
           </div>
           <div class="row">
-            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><img alt="Lahore" class="img-fluid image-block" src="src/images/lahore.jpg"></div><div class="font-15 text-block padding-10"> Lahore </div></div>
-            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><img alt="Islamabad" class="img-fluid image-block" src="src/images/islamabad.jpg"></div><div class="text-block font-15 padding-10"> Islamabad </div></div>
-            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><img alt="Karachi" class="img-fluid image-block" src="src/images/karachi.jpg"></div><div class="text-block font-15 padding-10"> Karachi </div></div>
-            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><img alt="Faisalabad" class="img-fluid image-block" src="src/images/faisalabad.jpg"></div><div class="text-block font-15 padding-10"> Faisalabad </div></div>
-            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><img alt="Peshawar" class="img-fluid image-block" src="src/images/peshawar.jpg"></div><div class="text-block font-15 padding-10"> Peshawar </div></div>
-            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><img alt="Quetta" class="img-fluid image-block" src="src/images/quetta.jpg"></div><div class="text-block font-15 padding-10"> Quetta </div></div>
+            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><a href='pages/display-hostel.php?city=Lahore'><img alt="Lahore" class="img-fluid image-block" src="src/images/lahore.jpg"></a></div><div class="font-15 text-block padding-10"> Lahore </div></div>
+            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><a href='pages/display-hostel.php?city=Islamabad'><img alt="Islamabad" class="img-fluid image-block" src="src/images/islamabad.jpg"></a></div><div class="text-block font-15 padding-10"> Islamabad </div></div>
+            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><a href='pages/display-hostel.php?city=Karachi'><img alt="Karachi" class="img-fluid image-block" src="src/images/karachi.jpg"></a></div><div class="text-block font-15 padding-10"> Karachi </div></div>
+            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><a href='pages/display-hostel.php?city=Faisalabad'><img alt="Faisalabad" class="img-fluid image-block" src="src/images/faisalabad.jpg"></a></div><div class="text-block font-15 padding-10"> Faisalabad </div></div>
+            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><a href='pages/display-hostel.php?city=Peshawar'><img alt="Peshawar" class="img-fluid image-block" src="src/images/peshawar.jpg"></a></div><div class="text-block font-15 padding-10"> Peshawar </div></div>
+            <div class="text-center margin-top-10 col-sm-6 col-12 col-md-4"><div class="image-holder"><a href='pages/display-hostel.php?city=Quetta'><img alt="Quetta" class="img-fluid image-block" src="src/images/quetta.jpg"></a></div><div class="text-block font-15 padding-10"> Quetta </div></div>
           </div>
           <hr>
           <div class="text-justify">
