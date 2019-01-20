@@ -8,6 +8,24 @@
         $email = $_POST['email'];
         $pass = $_POST['password'];
 
+        $regex_email = '/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/';
+        
+        $regex_pass = "/^.*(?=.{6,})(?=.*[a-zA-Z])[a-zA-Z0-9]+$/";
+        if(!preg_match($regex_email, $email))
+        {
+            echo '<script> 
+            document.getElementById("email_error").innerHTML = "*Invalid Email";
+            </script>';
+        }
+
+        if(!preg_match($regex_pass, $pass))
+        {
+            echo '<script> 
+            document.getElementById("pass_error").innerHTML = "*Invalid password";
+            </script>';
+        }
+
+
         $sql = "SELECT  * FROM `users` WHERE user_email = '$email' AND  user_password = '$pass'";
         $result = $conn->query($sql);
 
@@ -24,6 +42,7 @@
         }
     }
 ?>
+
 
 <body style="height: 100vh; background: #F9F9F9;" class="d-flex justify-content-center align-items-center">
 
