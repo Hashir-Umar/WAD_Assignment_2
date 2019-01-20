@@ -33,17 +33,6 @@
 
 	if(!mysqli_query($conn, $sql))
 		die("Error description: " . mysqli_error($conn));
-	else 
-	{
-		$sql = "INSERT INTO `pending_users`
-		( user_email, user_password, user_account_type )
-		VALUES ('admin@test.com', '123', 2);";
-
-		$result = mysqli_query($conn, $sql);
-		if(!$result) {
-			die("Error description: " . mysqli_error($conn));
-		} 
-	}
 
 	//table to store hostel data
 	$sql = 'CREATE TABLE IF NOT EXISTS `hostels` (
@@ -123,6 +112,19 @@
 		('user1@test.com', '123', 1), 
 		('user2@test.com', '123', 1),
 		('owner@test.com', '123', 3);";
+
+		if(!mysqli_query($conn, $sql)) {
+			die("Error description: " . mysqli_error($conn));
+		} 
+	}
+
+	// adding dummy data to users pending table
+	if(isTableEmpty($conn, 'pending_users'))
+	{
+		$sql = "INSERT INTO `pending_users`
+		( user_email, user_password, user_account_type )
+		VALUES
+		('admin@test.com', '123', 2);";
 
 		if(!mysqli_query($conn, $sql)) {
 			die("Error description: " . mysqli_error($conn));
