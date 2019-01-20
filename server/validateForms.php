@@ -30,8 +30,60 @@
         $hostel_extras = $_POST["hostel_extras"];
         $hostel_image_name = basename($_FILES['user_file']['name']);
         $hostel_image_temp_name = $_FILES['user_file']['tmp_name'];
+
+        if (!preg_match('/image/', $_FILES['user_file']['type']))
+        {
+            $_SESSION['error_msg'] = "Non-image files are not allowed!";
+            header("Location: ../pages/add-hostel.php");
+            die();
+        }
         
-        validateAndUpldoad($hostel_name, $hostel_city, $hostel_address, $hostel_rooms, $hostel_extras, $hostel_image_name, $hostel_image_temp_name);
+        $hostel_name_regex = '/^(?=[a-z]{2})(?=.{4,26})(?=[^.]*\.?[^.]*$)(?=[^_]*_?[^_]*$)[\w.]+$/iD';
+        $hostel_city_regex = '/Lahore|Islamabad|Karachi|Faisalabad|Peshawar|Quetta/';
+        $hostel_address_regex = '/^[a-zA-Z]([a-zA-Z-]+\s)+\d{1,4}$/';
+        
+        if($hostel_name == ""
+        || $hostel_city == ""
+        || $hostel_address == ""
+        || $hostel_rooms == ""
+        || $hostel_image_name == "") {
+            $_SESSION['error_msg'] = "You can not leave any feild empty";
+            header("Location: ../pages/add-hostel.php");
+            die();
+        }
+
+        if (!preg_match($hostel_name_regex,  $hostel_name))  {
+            $_SESSION['error_msg'] = "Hostel name not valid";
+            header("Location: ../pages/add-hostel.php");
+        }
+        else if (!preg_match($hostel_city_regex,  $hostel_city))  {
+            $_SESSION['error_msg'] = "City name not valid";
+            header("Location: ../pages/add-hostel.php");
+        }
+        else if (!preg_match($hostel_address_regex,  $hostel_address))  {
+            $_SESSION['error_msg'] = "Address not valid";
+            header("Location: ../pages/add-hostel.php");
+        }
+        else {
+            $hostel_owner = $_SESSION['user_id'];
+            $hostel_id = getNewHostelID($conn);
+            $uploaddir = 'src/hostel_images/'.$hostel_id.'_'.$hostel_image_name;
+
+            global $conn;
+            $sql = "INSERT INTO `hostels`(`hostel_name`, `hostel_city`, `hostel_address`, `hostel_rooms`, `hostel_extras`, `hostel_owner`, `hostel_img`) VALUES ('".$hostel_name."', '".$hostel_city."', '".$hostel_address."', '".$hostel_rooms."', '".$hostel_extras."', '".$hostel_owner."', '".$uploaddir."');";
+            $result = mysqli_query($conn,$sql);
+            if(!$result) {
+                die("Error description: " . mysqli_error($conn));
+            }
+            
+            if (move_uploaded_file($hostel_image_temp_name, '../'.$uploaddir)) {
+                $_SESSION['error_msg'] = "Your hostel has been successfully sent for review by our team. You will be notified once it gets reviewed.";
+                header("Location: ../pages/add-hostel.php");
+            } else {
+                $_SESSION['error_msg'] = "Error occured while uploading image.";
+                header("Location: ../pages/add-hostel.php");
+            }
+        }
     }
 
 ?>
