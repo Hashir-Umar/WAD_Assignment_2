@@ -49,7 +49,7 @@
             die();
         }
 
-    } 
+    }
     else if(isset($_POST["uploadHostel"]))
     {  
         $hostel_name = $_POST["hostel_name"];

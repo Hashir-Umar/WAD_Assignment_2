@@ -7,26 +7,27 @@ $(document).on("click", ".openDiag", function(){
 });
 
 $(document).ready(function(){
-	$('[data-hosteldata]').click(function(){
+	$(document).on("click", ".openDialogHostel", function(){
 		var hosteldata = $(this).data('hosteldata');
 
-		$('input[name=hostel_name]').val(hosteldata['hostel_name']);
-		$('select[name="hostel_city"] option[value='+hosteldata['hostel_city']).attr("selected", "selected");
-		$('input[name=hostel_address]').val(hosteldata['hostel_address']);
-		$('input[name=hostel_rooms]').val(hosteldata['hostel_rooms']);
-		$('#uploadHostel').attr('name', 'editHostel');
-		$('#uploadHostel')[0].innerHTML="Edit Hostel";
-
+		$('#hostel_hidden_id').val(hosteldata['hostel_id']);
+		$('input[name="edit_hostel_name"]').val(hosteldata['hostel_name']);
+		$('select[name="edit_hostel_city"] option[value='+hosteldata['hostel_city']).attr("selected", "selected");
+		$('input[name=edit_hostel_address]').val(hosteldata['hostel_address']);
+		$('input[name=edit_hostel_rooms]').val(hosteldata['hostel_rooms']);
+		$('textarea[name=edit_hostel_extras]').val(hosteldata['hostel_extras']);
 		
 	});
 
-	$('#myModal').on('hidden.bs.modal', function () 
-	{
-		$('input[name=hostel_name]').val("");
-		$('select[name="hostel_city"] option[value="Lahore"]').attr("selected", "selected");
-		$('input[name=hostel_address]').val("");
-		$('input[name=hostel_rooms]').val("");
-		$('#uploadHostel').attr('name', 'uploadHostel');
-		$('#uploadHostel')[0].innerHTML="Add Hostel";
-	})
+	$(document).on("click", ".openDialogPendingHostel", function(){
+		var hosteldata = $(this).data('hosteldata');
+
+		$('#pending_hostel_hidden_id').val(hosteldata['hostel_id']);
+		$('input[name="edit_hostel_name"]').val(hosteldata['hostel_name']);
+		$('select[name="edit_hostel_city"] option[value='+hosteldata['hostel_city']).attr("selected", "selected");
+		$('input[name=edit_hostel_address]').val(hosteldata['hostel_address']);
+		$('input[name=edit_hostel_rooms]').val(hosteldata['hostel_rooms']);
+		$('textarea[name=edit_hostel_extras]').val(hosteldata['hostel_extras']);
+
+	});
 });

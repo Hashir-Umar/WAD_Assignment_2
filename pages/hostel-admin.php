@@ -108,11 +108,11 @@
                                     echo '</div>';
                                     echo '<div class="button-section d-flex flex-column">';
                                     
-                                    echo "<button class='openDiag btn btn-md btn-warning'
+                                    echo "<button class='openDialogHostel btn btn-md btn-warning'
                                         data-toggle='modal'
                                         data-hosteldata='".json_encode($row)."'
                                         data-title='Edit your hostel info'
-                                        data-target='#myModal'>
+                                        data-target='#myModalEditHostel'>
                                             <i class='fa fa-edit'></i>
                                         </button>";
                                         
@@ -170,11 +170,11 @@
                                     echo '</div>';
                                     echo '<div class="button-section d-flex flex-column">';
                                         
-                                        echo "<button class='openDiag btn btn-md btn-warning'
+                                        echo "<button class='openDialogPendingHostel btn btn-md btn-warning'
                                         data-toggle='modal'
                                         data-hosteldata='".json_encode($row)."'
                                         data-title='Edit your hostel info'
-                                        data-target='#myModal'>
+                                        data-target='#myModalEditPendingHostel'>
                                             <i class='fa fa-edit'></i>
                                         </button>";
 
@@ -267,6 +267,8 @@
         </div>
     </div>
     <!-- End Modal -->
+
+    <?php include_once("../includes/edit-hostel-modal.php"); ?>
 
     <!-- start Modal for dialog massage-->
     <div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
