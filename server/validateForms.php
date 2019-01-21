@@ -50,7 +50,7 @@
         }
 
     } 
-    else if(isset($_POST["uploadHostel"]))
+    else if(isset($_POST["uploadHostel"]) || isset($_POST["editHostel"]))
     {  
         $hostel_name = $_POST["hostel_name"];
         $hostel_city = $_POST["hostel_city"];

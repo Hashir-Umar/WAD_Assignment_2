@@ -107,7 +107,14 @@
                                         echo '</div>';
                                     echo '</div>';
                                     echo '<div class="button-section d-flex flex-column">';
-                                        echo '<button class="btn btn-md btn-warning"><i class="fa fa-edit"></i></button>';
+                                    
+                                    echo "<button class='openDiag btn btn-md btn-warning'
+                                        data-toggle='modal'
+                                        data-hosteldata='".json_encode($row)."'
+                                        data-title='Edit your hostel info'
+                                        data-target='#myModal'>
+                                            <i class='fa fa-edit'></i>
+                                        </button>";
                                         
                                         echo "<button class='openDiag btn btn-md btn-danger'
                                         data-toggle='modal'
@@ -162,7 +169,14 @@
                                         echo '</div>';
                                     echo '</div>';
                                     echo '<div class="button-section d-flex flex-column">';
-                                        echo '<button class="btn btn-md btn-warning"><i class="fa fa-edit"></i></button>';
+                                        
+                                        echo "<button class='openDiag btn btn-md btn-warning'
+                                        data-toggle='modal'
+                                        data-hosteldata='".json_encode($row)."'
+                                        data-title='Edit your hostel info'
+                                        data-target='#myModal'>
+                                            <i class='fa fa-edit'></i>
+                                        </button>";
 
                                         echo "<button class='openDiag btn btn-md btn-danger'
                                         data-toggle='modal'
@@ -241,7 +255,7 @@
                                     
                                     <!-- <input type="hidden" name="MAX_FILE_SIZE" value="30000" /> -->
                                     <div class="input-group-text mb-2"><i class="far fa-images"></i>&nbsp Select an image<input name = "user_file" id = "file" class = "btn" type = "file" ></div>
-                                    <button type="submit" name="uploadHostel" class="btn btn-block btn-outline-dark mb-1 mb-md-2"> Add Hostel </button>
+                                    <button id="uploadHostel" type="submit" name="uploadHostel" class="btn btn-block btn-outline-dark mb-1 mb-md-2"> Add Hostel </button>
                                     
                                 </div>
                             </div> 
@@ -276,5 +290,5 @@
     </div>
     <!-- End Modal for dialog massage -->
 
-</body>
+
 <?php include_once('../includes/footer.php'); ?>
