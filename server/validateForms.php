@@ -110,7 +110,7 @@
                 header("Location: ../pages/hostel-admin.php");
             } else {
                 $_SESSION['error_msg'] = "Error occured while uploading image.";
-                header("Location: ../pages/hostel-admim.php");
+                header("Location: ../pages/hostel-admin.php");
             }
         }
 		
