@@ -1,6 +1,19 @@
-<?php session_start(); ?>
 <?php include("../config.php");?>
 <?php include_once("../includes/header.php"); ?>
+<?php session_start(); ?>
+
+<?php
+  $account_type = 0;
+  if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 1)
+  {
+    $account_type = 1;
+  }
+  else if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 2)
+  {
+    $account_type = 2;
+  }
+  
+?>
 
 <body> 
 

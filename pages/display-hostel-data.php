@@ -25,6 +25,21 @@
     $PAGE_TITLE = $assoc['hostel_name'];
 ?>
 <?php include_once("../includes/header.php");?>
+
+<?php
+  $account_type = 0;
+  if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 1)
+  {
+    $account_type = 1;
+  }
+  else if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 2)
+  {
+    $account_type = 2;
+  }
+  
+?>
+
+
 <body>
 
     <?php include_once("../includes/navbar.php"); ?>

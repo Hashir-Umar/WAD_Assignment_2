@@ -12,9 +12,9 @@
             </li>
             <li class="nav-item">
                 <?php 
-                if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 2)
+                if($account_type == 2)
                     echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/hostel-admin.php"> <i class="fa fa-tasks"></i> &nbsp; Manage Your Hostels </a>';
-                else
+                else if($account_type == 0)
                     echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/login.php"> <i class="fa fa-sign-in-alt"></i> &nbsp; Login/Register </a>';
                 ?>
 
@@ -25,6 +25,17 @@
             <li class="nav-item">
                 <a class="nav-link <?php if($CURRENT_PAGE == "Contact") echo " active"; ?>" href="<?php echo $domain.$root_folder."pages/contact-us.php"; ?>" class="nav-link"> <i class="fas fa-envelope"></i> &nbsp; Contact Us</a>
             </li>
+            <?php 
+                if($account_type == 1)
+                {
+                    echo'<li class="nav-item">';
+                        echo '<a class="nav-link"';
+                        if($CURRENT_PAGE == "Contact") 
+                            echo " active "; 
+                        echo "href='".$domain.$root_folder."pages/logout.php' class='nav-link'> <i class='fas fa-sign-out-alt'></i> &nbsp; Logout </a>";
+                    echo '</li>';
+                }
+            ?>
     </ul>
     </div>
     </div>

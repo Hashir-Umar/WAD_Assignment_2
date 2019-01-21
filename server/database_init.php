@@ -111,6 +111,7 @@
 		('user@test.com', '123', 1), 
 		('user1@test.com', '123', 1), 
 		('user2@test.com', '123', 1),
+		('admin@test.com', '123', 2),
 		('owner@test.com', '123', 3);";
 
 		if(!mysqli_query($conn, $sql)) {
@@ -124,7 +125,7 @@
 		$sql = "INSERT INTO `pending_users`
 		( user_email, user_password, user_account_type )
 		VALUES
-		('admin@test.com', '123', 2);";
+		('admin1@test.com', '123', 2);";
 
 		if(!mysqli_query($conn, $sql)) {
 			die("Error description: " . mysqli_error($conn));

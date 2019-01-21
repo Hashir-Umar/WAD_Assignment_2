@@ -24,7 +24,7 @@
                 </form>
                 <div class="hover-pointer mx-2"><i class="fa fa-bell"></i></div>
                 <div class="hover-pointer mx-2">Hashir</div>
-                <div><i class="fas fa-sign-out-alt  mx-2"></i>Logout</div>
+                <a href="logout.php" class="hover-pointer"><i class="fas fa-sign-out-alt mx-2"></i>Logout</a>
             </div>
         </div>
     </div>
