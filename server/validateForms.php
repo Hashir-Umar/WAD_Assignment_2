@@ -103,8 +103,8 @@
         }
         else {
             $hostel_owner = $_SESSION['user_id'];
-            $hostel_id = getNewHostelID($conn);
-            $uploaddir = 'src/hostel_images/'.$hostel_id.'_'.$hostel_image_name[0];
+            $hostel_id_name = getNewHostelID($conn);
+            $uploaddir = 'src/hostel_images/'.$hostel_id_name.'_'.$hostel_image_name[0];
 
             global $conn;
             $sql = "INSERT INTO `pending_hostels`(`hostel_name`, `hostel_city`, `hostel_address`, `hostel_rooms`, `hostel_extras`, `hostel_owner`, `hostel_img`) VALUES ('".$hostel_name."', '".$hostel_city."', '".$hostel_address."', '".$hostel_rooms."', '".$hostel_extras."', '".$hostel_owner."', '".$uploaddir."');";
@@ -114,12 +114,13 @@
             }
             
             
+            $hostel_id = getRecentHostelID($conn, 'pending_hostels');
             $array_size = count($hostel_image_name);
             for($i = 0; $i < $array_size; $i++)
             {
-                $uploaddir = 'src/hostel_images/'.$hostel_id.'_'.$hostel_image_name[$i];
+                $uploaddir = 'src/hostel_images/'.$hostel_id_name.'_'.$hostel_image_name[$i];
                 
-                $sql = "INSERT INTO `hostels_images`(`hostel_id`, `hostel_pic`) VALUES ('".$hostel_id."', '".$uploaddir."');";
+                $sql = "INSERT INTO `hostels_images`(`pending_hostel_id`, `hostel_pic`) VALUES ('".$hostel_id."', '".$uploaddir."');";
                 $result = mysqli_query($conn,$sql);
                 if(!$result) {
                     die("Error description: " . mysqli_error($conn));

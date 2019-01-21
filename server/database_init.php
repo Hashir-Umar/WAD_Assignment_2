@@ -78,7 +78,8 @@
 
 	// table to store the pictures of the hostels
 	$sql = 'CREATE TABLE IF NOT EXISTS `hostels_images` (
-			  `hostel_id` int(11) NOT NULL,
+			  `hostel_id` int(11) DEFAULT 0,
+			  `pending_hostel_id` int(11) DEFAULT 0,
 			  `hostel_pic` TEXT NOT NULL
 			);';
 	if(!mysqli_query($conn, $sql))
@@ -124,11 +125,11 @@
 	if(isTableEmpty($conn, 'pending_hostels'))
 	{
 		$sql = "INSERT INTO `pending_hostels`
-			( hostel_name, hostel_city, hostel_address, hostel_rooms, hostel_extras, hostel_owner, hostel_img )
+			( hostel_id, hostel_name, hostel_city, hostel_address, hostel_rooms, hostel_extras, hostel_owner, hostel_img )
 			VALUES
-			('hostel4', 'Lahore', 'Johar town 12', '12', 'AC, fridge, Heater', '4', 'src/hostel_images/4_image1.jpg'), 
-			('hostel5', 'Lahore', 'Johar town 92', '9', 'AC, fridge, Microwave', '4', 'src/hostel_images/5_image1.jpg'), 
-			('hostel6', 'Karachi', 'Johar town 102', '3', 'AC, fridge', '4', 'src/hostel_images/6_image1.jpg');";
+			('1', 'hostel4', 'Lahore', 'Johar town 12', '12', 'AC, fridge, Heater', '4', 'src/hostel_images/4_image1.jpg'), 
+			('2', 'hostel5', 'Lahore', 'Johar town 92', '9', 'AC, fridge, Microwave', '4', 'src/hostel_images/5_image1.jpg'), 
+			('3', 'hostel6', 'Karachi', 'Johar town 102', '3', 'AC, fridge', '4', 'src/hostel_images/6_image1.jpg');";
 
 			$result = mysqli_query($conn, $sql);
 			if(!$result) {
@@ -140,11 +141,11 @@
 	if(isTableEmpty($conn, 'hostels'))
 	{
 		$sql = "INSERT INTO `hostels`
-			( hostel_name, hostel_city, hostel_address, hostel_rooms, hostel_extras, hostel_owner, hostel_img )
+			( hostel_id, hostel_name, hostel_city, hostel_address, hostel_rooms, hostel_extras, hostel_owner, hostel_img )
 			VALUES
-			('hostel1', 'Peshawar', 'Murree town 53', '12', 'Double bed', '4', 'src/hostel_images/1_image1.jpg'), 
-			('hostel2', 'Lahore', 'Murree town 345', '9', 'heater, Double bed', '4', 'src/hostel_images/2_image1.jpg'), 
-			('hostel3', 'Quetta', 'Murree town 123', '3', 'AC, heater, Double bed', '4', 'src/hostel_images/3_image1.jpg');";
+			('1', 'hostel1', 'Peshawar', 'Murree town 53', '12', 'Double bed', '4', 'src/hostel_images/1_image1.jpg'), 
+			('2', 'hostel2', 'Lahore', 'Murree town 345', '9', 'heater, Double bed', '4', 'src/hostel_images/2_image1.jpg'), 
+			('3', 'hostel3', 'Quetta', 'Murree town 123', '3', 'AC, heater, Double bed', '4', 'src/hostel_images/3_image1.jpg');";
 
 			$result = mysqli_query($conn, $sql);
 			if(!$result) {
@@ -156,20 +157,20 @@
 	if(isTableEmpty($conn, 'hostels_images'))
 	{
 		$sql = "INSERT INTO `hostels_images`
-			( hostel_id, hostel_pic)
+			( pending_hostel_id, hostel_id, hostel_pic)
 			VALUES
-			('1', 'src/hostel_images/1_image1.jpg'), 
-			('1', 'src/hostel_images/1_image2.jpg'), 
-			('1', 'src/hostel_images/1_image3.jpg'), 
-			('2', 'src/hostel_images/2_image1.jpg'), 
-			('2', 'src/hostel_images/2_image2.jpg'), 
-			('2', 'src/hostel_images/2_image3.jpg'), 
-			('3', 'src/hostel_images/3_image1.jpg'), 
-			('3', 'src/hostel_images/3_image2.jpg'), 
-			('3', 'src/hostel_images/3_image3.jpg'), 
-			('4', 'src/hostel_images/4_image1.jpg'), 
-			('5', 'src/hostel_images/5_image1.jpg'), 
-			('6', 'src/hostel_images/6_image1.jpg');";
+			('0', '1', 'src/hostel_images/1_image1.jpg'), 
+			('0', '1', 'src/hostel_images/1_image2.jpg'), 
+			('0', '1', 'src/hostel_images/1_image3.jpg'), 
+			('0', '2', 'src/hostel_images/2_image1.jpg'), 
+			('0', '2', 'src/hostel_images/2_image2.jpg'), 
+			('0', '2', 'src/hostel_images/2_image3.jpg'), 
+			('0', '3', 'src/hostel_images/3_image1.jpg'), 
+			('0', '3', 'src/hostel_images/3_image2.jpg'), 
+			('0', '3', 'src/hostel_images/3_image3.jpg'), 
+			('1', '0', 'src/hostel_images/4_image1.jpg'), 
+			('2', '0', 'src/hostel_images/5_image1.jpg'), 
+			('3', '0', 'src/hostel_images/6_image1.jpg');";
 
 			$result = mysqli_query($conn, $sql);
 			if(!$result) {

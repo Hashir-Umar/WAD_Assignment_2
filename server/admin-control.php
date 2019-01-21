@@ -1,6 +1,7 @@
 <?php
 
 	include_once "database_connection.php";
+	include_once "functions.php";
 	session_start();
 
 	if (isset($_GET["accept_hostel_req"]))
@@ -13,6 +14,7 @@
 		if (mysqli_num_rows($result) != 0)
 		{
 			$assoc = mysqli_fetch_assoc($result);
+			$pendingID = $assoc['hostel_id'];
 			$name = $assoc['hostel_name'];
 			$city = $assoc['hostel_city'];
 			$addr = $assoc['hostel_address'];
@@ -22,6 +24,7 @@
 			$img = $assoc['hostel_img'];
 
 			$sql = "INSERT INTO `hostels` ( hostel_name, hostel_city, hostel_address, hostel_rooms, hostel_extras, hostel_owner, hostel_img ) VALUES ('$name', '$city', '$addr', '$rooms', '$extras', '$owner', '$img');";
+
 			if(!mysqli_query($conn, $sql))
 			{
 				$_SESSION['admin_panel_msg'] = "An error occurred!";
@@ -29,7 +32,13 @@
 				exit();
 			}
 
-			$sql = "DELETE FROM pending_hostels WHERE hostel_id = $id;";
+			$newID = getRecentHostelID($conn, 'hostels');
+			$sql = "UPDATE hostels_images SET hostel_id = '$newID' WHERE pending_hostel_id = '$pendingID'";
+			mysqli_query($conn, $sql);
+			$sql = "UPDATE hostels_images SET pending_hostel_id = '0' WHERE pending_hostel_id = '$pendingID'";
+			mysqli_query($conn, $sql);
+
+			$sql = "DELETE FROM pending_hostels WHERE hostel_id = $pendingID;";
 			if(!mysqli_query($conn, $sql))
 			{
 				$_SESSION['admin_panel_msg'] = "An error occurred!";
