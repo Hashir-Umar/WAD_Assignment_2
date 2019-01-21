@@ -16,7 +16,7 @@
 			  `user_email` varchar(30) NOT NULL,
 			  `user_password` varchar(255) NOT NULL,
 			  `user_account_type` TINYINT NOT NULL,
-			  PRIMARY KEY (`user_id`)
+			  PRIMARY KEY (`user_id` ,`user_email`)
 			);';
 
 	if(!mysqli_query($conn, $sql))
@@ -28,7 +28,7 @@
 		`user_email` varchar(30) NOT NULL,
 		`user_password` varchar(255) NOT NULL,
 		`user_account_type` TINYINT NOT NULL,
-		PRIMARY KEY (`user_id`)
+		PRIMARY KEY (`user_id` ,`user_email`)
 	  );';
 
 	if(!mysqli_query($conn, $sql))
