@@ -58,7 +58,10 @@
                     <?php
                         for ($var = 0; $var < count($images); $var++)
                         {
-                            echo "<div class='carousel-item active'>
+                            $act = "";
+                            if ($var == 0)
+                                $act = "active";
+                            echo "<div class='carousel-item $act'>
                                   <img class='d-block w-100' src='../$images[$var]'>
                                 </div>";
                         }

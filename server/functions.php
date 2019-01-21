@@ -31,17 +31,15 @@
 	{
 		$imageArr = array();
 
-		$sql = "SELECT hostel_img FROM hostels WHERE hostel_id='$id'";
-	    $result = mysqli_fetch_assoc(mysqli_query($conn, $sql));
-	    array_push($imageArr, $result['hostel_img']);
-
 	    $sql = "SELECT hostel_pic FROM hostels_images WHERE hostel_id='$id'";
 	    $result = mysqli_query($conn, $sql);
 	    $count = mysqli_num_rows($result);
-	    $assoc = mysqli_fetch_assoc($result);
 
 	    for ($var = 0; $var < $count; $var++)
+	    {
+	    	$assoc = mysqli_fetch_assoc($result);
 	    	array_push($imageArr, $assoc['hostel_pic']);
+	    }
 
 	    return $imageArr;
 	}
