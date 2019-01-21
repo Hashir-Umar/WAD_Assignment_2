@@ -28,6 +28,7 @@ function stringCheck()
 }
 
 
+
 function validateEmail(email) {
   var result = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return result.test(email);
@@ -38,38 +39,64 @@ function validatePassword(password) {
     return result.test(password);
   }
 
+function handleChange(checkbox) {
+    var div = document.getElementById("phone_div");
+    var phn = document.getElementById("phone");
+
+    if(checkbox.checked == true){
+        phn.style.display = "block";
+        div.style.display = "block";
+        phn.value = "";
+    }
+    else
+    {
+        phn.style.display = "none";
+        div.style.display = "none"; 
+        phn.value = "";
+
+    }
+}
+
 function validate() {
+    document.getElementById("email_error").innerHTML = ' ';
+    document.getElementById("pass_error").innerHTML = ' ';
     var email = document.getElementById("email");
-    var btn = document.getElementById("btn");
     var password = document.getElementById("password");
     var confirm_password = document.getElementById("confirm_password");
 
     var email_res = validateEmail(email.value);
     var password_res = validatePassword(password.value)
 
-    if(email_res && password_res && password.value == confirm_password.value)
-    {
-        
-        window.location.href = '../index.php';
-    }
-    else if(!email_res && email.value != "")
+    if(!email_res)
     {
         email.style.borderColor = "red";
-        email.title = "Invalid Input!";
+        document.getElementById("email_error").innerHTML = '*Enter valid Email';
+        return false;
     }
-    else if(!password_res && password.value != "")
+    else if(email.value == "")
+    {
+        email.style.borderColor = "red";
+        document.getElementById("email_error").innerHTML = '*Field Required';
+        return false;
+    }
+    else if(password.value == "")
     {
         password.style.borderColor = "red";
-        password.title = "Invalid Password!"
+        document.getElementById("pass_error").innerHTML = '*Field Required';
+        return false;
+    }
+    else if(!password_res)
+     {
+        password.style.borderColor = "red";
+        document.getElementById("pass_error").innerHTML = '*Enter valid password';
+        return false;
     }
     else if(password.value != confirm_password.value)
     {
-        password.style.borderColor = "red";
         confirm_password.style.borderColor = "red";
-        password.title = "Password Mismatch!";
-        confirm_password.title = "Password Mismatch!";
+        document.getElementById("cnfrm_pass_error").innerHTML  = "Password Mismatch!";
+        return false;
     }
-    btn.type = "button";
+
+    return true;
 }
-
-

@@ -97,5 +97,17 @@
 		
 		return 0;
 	}
+	
+	
+	function insertData($conn,$fname,$lname,$Gender,$email, $password,$phone_no,$user_account_type)
+	{
+        $insertQuery = "insert into users (user_email,user_fname,user_lname,user_Gender,user_p_no,user_password,user_account_type)
+        values ('$email','$fname', '$lname', '$Gender', '$phone_no','$password', '$user_account_type');";
+
+		$result = mysqli_query($conn,$insertQuery);
+		
+		if(!$result)
+       		die("Error description: " . mysqli_error($conn));
+	}
 
 ?>

@@ -113,6 +113,44 @@
                 header("Location: ../pages/hostel-admim.php");
             }
         }
+		
     }
+	else if(isset($_POST['submit'])){
+
+        $email_regex = '/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
+        $pass_regex =  '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/';
+
+
+        $fname = $_POST['first_name'];
+        $lname = $_POST['last_name'];
+        $phone_no = $_POST['phone'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $Gender = $_POST['Gender'];
+        $cnfrm_pass = $_POST['confirm_password'];
+        $user_account_type = '1';
+
+        $sql = "SELECT  * FROM `users` WHERE user_email = '$email'";
+            $result = $conn->query($sql);
+
+        
+        if((preg_match($email_regex,  $email)) && (preg_match($pass_regex,  $password)))
+        {
+            if($result->num_rows > 0)
+            {
+                header("Location: ../pages/signup.php");
+            }
+            else
+            {  
+                if(empty($_POST['user_account_type']))
+                {
+                    $phone_no = "";
+                    $user_account_type = '0';
+                }
+                header('Location: ../index.php'); 
+                insertData($conn,$fname,$lname,$Gender,$email, $password,$phone_no,$user_account_type);
+            }
+        }
+	}
 
 ?>
