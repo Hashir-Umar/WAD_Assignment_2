@@ -35,7 +35,7 @@ function validateEmail(email) {
 }
 
 function validatePassword(password) {
-    var result=  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
+    var result=  /^.{6,}$/gm;
     return result.test(password);
   }
 
