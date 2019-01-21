@@ -12,12 +12,12 @@
             </li>
             <li class="nav-item">
                 <?php 
-                if($account_type == 2)
-                    echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/hostel-admin.php"> <i class="fa fa-tasks"></i> &nbsp; Manage Your Hostels </a>';
-                else if($account_type == 3)
-                    echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/admin-panel.php"> <i class="fa fa-tasks"></i> &nbsp; Admin Panel </a>';       
-                else if($account_type == 0)
-                    echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/login.php"> <i class="fa fa-sign-in-alt"></i> &nbsp; Login/Register </a>';
+                    if(isset($_SESSION['user_account_type']) &&  $_SESSION['user_account_type'] == 2)
+                        echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/hostel-admin.php"> <i class="fa fa-tasks"></i> &nbsp; Manage Your Hostels </a>';
+                    else if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 3)
+                        echo '<a class="nav-link href="'.$domain.$root_folder.'pages/admin-panel.php"> <i class="fa fa-tasks"></i> &nbsp; Admin Panel </a>';       
+                    else if(!isset($_SESSION['user_account_type']))
+                        echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/login.php"> <i class="fa fa-sign-in-alt"></i> &nbsp; Login/Register </a>';
                 ?>
 
             </li>
@@ -28,13 +28,13 @@
                 <a class="nav-link <?php if($CURRENT_PAGE == "Contact") echo " active"; ?>" href="<?php echo $domain.$root_folder."pages/contact-us.php"; ?>" class="nav-link"> <i class="fas fa-envelope"></i> &nbsp; Contact Us</a>
             </li>
             <?php 
-                if($account_type != 0)
+                if(isset($_SESSION['user_account_type']) &&  $_SESSION['user_account_type'] != 0)
                 {
                     echo'<li class="nav-item">';
                         echo '<a class="nav-link"';
                         if($CURRENT_PAGE == "Contact") 
                             echo " active "; 
-                        echo "href='".$domain.$root_folder."pages/logout.php' class='nav-link'> <i class='fas fa-sign-out-alt'></i> &nbsp; Logout </a>";
+                        echo "href='".$domain.$root_folder."server/logout.php' class='nav-link'> <i class='fas fa-sign-out-alt'></i> &nbsp; Logout </a>";
                     echo '</li>';
                 }
             ?>

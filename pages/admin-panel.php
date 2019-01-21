@@ -1,4 +1,9 @@
 <?php session_start(); ?>
+<?php
+    if(!(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 3)) {
+        header("Location: ../index.php");
+    }
+?>
 <?php include("../config.php");?>
 <?php include_once("../includes/header.php");
       include_once("../server/database_connection.php");

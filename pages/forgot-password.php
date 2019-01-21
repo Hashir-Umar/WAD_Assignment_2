@@ -1,4 +1,10 @@
 <?php session_start(); ?>
+<?php
+    if(!isset($_SESSION['user_account_type']))
+    {
+        header("Location: ../index.php");
+    }
+?>
 <?php include("../config.php");?>
 <?php include_once("../includes/header.php"); ?>
 <body style="height: 100vh; background: #F9F9F9;" class="d-flex justify-content-center align-items-center">

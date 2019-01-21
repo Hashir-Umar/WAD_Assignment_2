@@ -1,3 +1,13 @@
+<?php session_start(); ?>
+<?php
+    if(isset($_SESSION['user_id']) && $_SESSION['user_account_type'] == 2)
+    {
+        $admin_id = $_SESSION['user_id'];
+    }
+    else {
+        header("Location: ../index.php");
+    }
+?>
 <?php include_once('../config.php'); ?>
 <?php include_once('../includes/header.php'); ?>
 <?php require_once("../server/database_connection.php"); ?>
@@ -61,8 +71,8 @@
                     </li>
 
                     <?php
-
-                        $sql = "select * from `hostels`";
+                        
+                        $sql = "select * from `hostels` where hostel_owner=".$admin_id;
                         if($city != "")
                             $sql = "select * from `hostels` WHERE hostel_city='$city'";
                         $result = mysqli_query($conn, $sql);
@@ -106,7 +116,7 @@
                         <h3>Pending Requests</h3>
                     </li>
                     <?php
-                        $sql = "select * from `pending_hostels`";
+                        $sql = "select * from `pending_hostels` where hostel_owner=".$admin_id;
                         $result = mysqli_query($conn, $sql);
                         if(!$result) {
                             die("Error description: " . mysqli_error($conn));
