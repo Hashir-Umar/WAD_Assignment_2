@@ -9,9 +9,9 @@
         $pass = $_POST['password'];
 
         $regex_email = '/^[A-Za-z0-9]+\.?[A-Za-z0-9]+\@[a-z0-9]+\.[a-z]{2,4}(\.[a-z]{2,4})?$/';
-        
-        
-        $regex_pass = "/^.{6,}$/";
+          
+        //$regex_pass = "/^.{6,}$/";
+        $regex_pass = "/^.{2,}$/";
 
         if(!preg_match($regex_email, $email))
         {
@@ -50,21 +50,30 @@
         }
 
     } 
-    else if(isset($_POST["uploadHostel"]) || isset($_POST["editHostel"]))
+    else if(isset($_POST["uploadHostel"]))
     {  
         $hostel_name = $_POST["hostel_name"];
         $hostel_city = $_POST["hostel_city"];
         $hostel_address = $_POST["hostel_address"];
         $hostel_rooms = $_POST["hostel_rooms"];
         $hostel_extras = $_POST["hostel_extras"];
-        $hostel_image_name = basename($_FILES['user_file']['name']);
-        $hostel_image_temp_name = $_FILES['user_file']['tmp_name'];
+        $hostel_image_name = array();
+        $hostel_image_temp_name = array();
 
-        if (!preg_match('/image/', $_FILES['user_file']['type']))
+        foreach($_FILES["user_file"]["tmp_name"] as $key=>$tmp_name)
         {
-            $_SESSION['error_msg'] = "Non-image files are not allowed!";
-            header("Location: ../pages/hostel-admin.php");
-            die();
+            $file_name=$_FILES["user_file"]["name"][$key];
+            $file_tmp=$_FILES["user_file"]["tmp_name"][$key];
+           
+            if (!preg_match('/image/', $_FILES['user_file']['type'][$key]))
+            {
+                $_SESSION['error_msg'] = "Non-image files are not allowed!";
+                header("Location: ../pages/hostel-admin.php");
+                die();
+            }
+
+            array_push($hostel_image_name, basename($file_name));
+            array_push($hostel_image_temp_name, $file_tmp);
         }
         
         $hostel_name_regex = '/^(?=[a-z]{2})(?=.{4,26})(?=[^.]*\.?[^.]*$)(?=[^_]*_?[^_]*$)[\w.]+$/iD';
@@ -96,7 +105,7 @@
         else {
             $hostel_owner = $_SESSION['user_id'];
             $hostel_id = getNewHostelID($conn);
-            $uploaddir = 'src/hostel_images/'.$hostel_id.'_'.$hostel_image_name;
+            $uploaddir = 'src/hostel_images/'.$hostel_id.'_'.$hostel_image_name[0];
 
             global $conn;
             $sql = "INSERT INTO `pending_hostels`(`hostel_name`, `hostel_city`, `hostel_address`, `hostel_rooms`, `hostel_extras`, `hostel_owner`, `hostel_img`) VALUES ('".$hostel_name."', '".$hostel_city."', '".$hostel_address."', '".$hostel_rooms."', '".$hostel_extras."', '".$hostel_owner."', '".$uploaddir."');";
@@ -105,11 +114,30 @@
                 die("Error description: " . mysqli_error($conn));
             }
             
-            if (move_uploaded_file($hostel_image_temp_name, '../'.$uploaddir)) {
+            
+            $array_size = count($hostel_image_name);
+            for($i = 0; $i < $array_size; $i++)
+            {
+                $uploaddir = 'src/hostel_images/'.$hostel_id.'_'.$hostel_image_name[$i];
+                
+                $sql = "INSERT INTO `hostels_images`(`hostel_id`, `hostel_pic`) VALUES ('".$hostel_id."', '".$uploaddir."');";
+                $result = mysqli_query($conn,$sql);
+                if(!$result) {
+                    die("Error description: " . mysqli_error($conn));
+                }
+
+                if (move_uploaded_file($hostel_image_temp_name[$i], '../'.$uploaddir)) {
+                    $flag = 1;
+                } else {
+                    $_SESSION['error_msg'] = "Error occured while uploading image.";
+                    header("Location: ../pages/hostel-admin.php");
+                    die();
+                }
+            }
+
+            if($flag == 1)
+            {
                 $_SESSION['error_msg'] = "Your hostel has been successfully sent for review by our team. You will be notified once it gets reviewed.";
-                header("Location: ../pages/hostel-admin.php");
-            } else {
-                $_SESSION['error_msg'] = "Error occured while uploading image.";
                 header("Location: ../pages/hostel-admin.php");
             }
         }

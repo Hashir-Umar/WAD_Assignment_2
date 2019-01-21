@@ -254,7 +254,7 @@
                                     <textarea name="hostel_extras" placeholder="Additional Facilities" class="col-12" rows="5"></textarea>
                                     
                                     <!-- <input type="hidden" name="MAX_FILE_SIZE" value="30000" /> -->
-                                    <div class="input-group-text mb-2"><i class="far fa-images"></i>&nbsp Select an image<input name = "user_file" id = "file" class = "btn" type = "file" ></div>
+                                    <div class="input-group-text mb-2"><i class="far fa-images"></i>&nbsp Select an image<input name = "user_file[]" id = "file" class = "btn" type = "file" multiple></div>
                                     <button id="uploadHostel" type="submit" name="uploadHostel" class="btn btn-block btn-outline-dark mb-1 mb-md-2"> Add Hostel </button>
                                     
                                 </div>

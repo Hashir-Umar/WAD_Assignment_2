@@ -97,8 +97,7 @@
 	// table to store the pictures of the hostels
 	$sql = 'CREATE TABLE IF NOT EXISTS `hostels_images` (
 			  `hostel_id` int(11) NOT NULL,
-			  `hostel_pic` TEXT NOT NULL,
-			  	FOREIGN KEY (`hostel_id`) REFERENCES `hostels` (`hostel_id`)
+			  `hostel_pic` TEXT NOT NULL
 			);';
 	if(!mysqli_query($conn, $sql))
 		die("Error description: " . mysqli_error($conn));

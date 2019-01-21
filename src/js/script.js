@@ -19,4 +19,14 @@ $(document).ready(function(){
 
 		
 	});
+
+	$('#myModal').on('hidden.bs.modal', function () 
+	{
+		$('input[name=hostel_name]').val("");
+		$('select[name="hostel_city"] option[value="Lahore"]').attr("selected", "selected");
+		$('input[name=hostel_address]').val("");
+		$('input[name=hostel_rooms]').val("");
+		$('#uploadHostel').attr('name', 'uploadHostel');
+		$('#uploadHostel')[0].innerHTML="Add Hostel";
+	})
 });
