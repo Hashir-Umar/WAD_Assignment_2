@@ -63,13 +63,6 @@
           </form>
         </div>
       </div>
-    </div> 
-
-  <footer class = "footer_contact">
-      <div class='container text-center py-4'>
-        All Rights Reserved. <a href='#' class="text-muted"> hostel.info </a>  &copy; 2018
-      </div>
-  </footer>
-	
+    </div>	
 
   <?php include_once("../includes/footer.php"); ?>

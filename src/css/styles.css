@@ -385,13 +385,6 @@ input:focus {
 
 /*contect us*/
 
-.footer_contact {
-	position: absolute;
-    bottom: 0;
-    width: 100%;
-    overflow: hidden;
-}
-
 .vertical-align {
 	margin-top: 60px;
 }
