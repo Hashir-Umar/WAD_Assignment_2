@@ -5,7 +5,7 @@
       include_once("../server/functions.php");?>
 <body>
 
-    <?php include("../includes/admin-panel-navbar.php");?>
+    <?php include("../includes/navbar.php");?>
 
     <div class="container">
 
@@ -34,6 +34,8 @@
         <div class="row">
             <div class="col-12 text-block font-28"> Admin Panel </div>
         </div>
+
+        <hr>
 
         <!-- Error/Success message -->
 
