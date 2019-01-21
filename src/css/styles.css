@@ -58,6 +58,10 @@ section
    max-width:1000px;
    margin: 0 auto;
  }
+ .wrapper-navbar {
+   max-width:1500px;
+   margin: 0 auto;
+ }
 
 
 /*++++++++++++++++++++++++++++++++ REDUNDANT CLASSES ONLY TO BE USED INCASE OF REPONSIVE ELEMENTS TO AVOID INLINE-STYLING +++++++++++++++++++++++++++++++++++++++++++*/
