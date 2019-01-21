@@ -11,11 +11,12 @@
                 <a class="nav-link <?php if($CURRENT_PAGE == "Index") echo " active"; ?>" href="<?php echo $domain.$root_folder."index.php"; ?>"><i class="fas fa-home"></i> &nbsp; Home</a>
             </li>
             <li class="nav-item">
-                <?php 
+                <?php
+
                     if(isset($_SESSION['user_account_type']) &&  $_SESSION['user_account_type'] == 2)
                         echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/hostel-admin.php"> <i class="fa fa-tasks"></i> &nbsp; Manage Your Hostels </a>';
                     else if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 3)
-                        echo '<a class="nav-link href="'.$domain.$root_folder.'pages/admin-panel.php"> <i class="fa fa-tasks"></i> &nbsp; Admin Panel </a>';       
+                        echo '<a class="nav-link " href="'.$domain.$root_folder.'pages/admin-panel.php"> <i class="fa fa-tasks"></i> &nbsp; Admin Panel </a>';       
                     else if(!isset($_SESSION['user_account_type']))
                         echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/login.php"> <i class="fa fa-sign-in-alt"></i> &nbsp; Login </a>';
                 ?>
@@ -26,6 +27,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php if($CURRENT_PAGE == "Contact") echo " active"; ?>" href="<?php echo $domain.$root_folder."pages/contact-us.php"; ?>" class="nav-link"> <i class="fas fa-envelope"></i> &nbsp; Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link <?php if($CURRENT_PAGE == "Search City") echo " active"; ?>" href="<?php echo $domain.$root_folder."pages/display-hostel.php"; ?>" class="nav-link"> <i class="fas fa-search-location"></i> &nbsp; Search for Hostels</a>
             </li>
             <?php 
                 if(isset($_SESSION['user_account_type']) &&  $_SESSION['user_account_type'] != 0)
