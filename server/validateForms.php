@@ -10,6 +10,25 @@
         $email = $_POST['email'];
         $pass = $_POST['password'];
 
+        $regex_email = '/^[A-Za-z0-9]+\.?[A-Za-z0-9]+\@[a-z0-9]+\.[a-z]{2,4}(\.[a-z]{2,4})?$/';
+        
+        $regex_pass = "/^.*(?=.{6,})(?=.*[a-zA-Z])[a-zA-Z0-9]+$/";
+
+        if(!preg_match($regex_email, $email))
+        {
+            $_SESSION['error_msg'] = "*Invalid Email";
+            header('Location: ../pages/login.php');
+            die();
+        }
+
+        if(!preg_match($regex_pass, $pass))
+        {
+            $_SESSION['error_msg'] = "*Invalid password";
+            header('Location: ../pages/login.php');
+            die();
+        }
+
+
         $sql = "SELECT  * FROM `users` WHERE user_email = '$email' AND  user_password = '$pass'";
         $result = $conn->query($sql);
 
@@ -19,10 +38,12 @@
         }
         else
         {
-            // echo '<script> document.getElementById("email_error").innerHTML = "*Email and Password does not match";</script>';
+            $_SESSION['error_msg'] = "*Email and Password does not match";
             header('Location: ../pages/login.php');
+            die();
         }
-    }
+
+    } 
     else if(isset($_POST["uploadHostel"]))
     {  
         $hostel_name = $_POST["hostel_name"];

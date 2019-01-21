@@ -5,42 +5,18 @@
 <?php
     require_once "../server/database_connection.php";
     
-    if(isset($_POST['login'])){
-        $email = $_POST['email'];
-        $pass = $_POST['password'];
-
-        $regex_email = '/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/';
-        
-        $regex_pass = "/^.*(?=.{6,})(?=.*[a-zA-Z])[a-zA-Z0-9]+$/";
-        if(!preg_match($regex_email, $email))
+    if(isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']))
+    {
+        $msg = $_SESSION['error_msg'];
+        if(!preg_match('/success/',  $msg))
         {
-            echo '<script> 
-            document.getElementById("email_error").innerHTML = "*Invalid Email";
-            </script>';
+            echo "<div class='alert alert-danger mt-4' role='alert'>";
+            echo "<strong>Error: </strong>"; 
+                echo $msg;
+            echo "</div>";
         }
 
-        if(!preg_match($regex_pass, $pass))
-        {
-            echo '<script> 
-            document.getElementById("pass_error").innerHTML = "*Invalid password";
-            </script>';
-        }
-
-
-        $sql = "SELECT  * FROM `users` WHERE user_email = '$email' AND  user_password = '$pass'";
-        $result = $conn->query($sql);
-
-        if($result->num_rows > 0)
-        {
-            header('Location: ../index.php'); 
-        }
-        else
-        {
-            echo '<script> 
-            document.getElementById("pass_error").innerHTML = "*Email and Password does not match";
-            </script>';
-
-        }
+        $_SESSION['error_msg'] = "";
     }
 ?>
 
@@ -48,7 +24,7 @@
 <body style="height: 100vh; background: #F9F9F9;" class="d-flex justify-content-center align-items-center">
 
 <div class="container">
-    <form action="login.php" onsubmit="return stringCheck()" method ="POST">
+    <form action="../server/validateForms.php" onsubmit="return stringCheck()" method ="POST">
         <div class="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
             <div class="container">
                 <div class="logo-container text-center mb-4">
