@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php include("../config.php");?>
 <?php include_once("../includes/header.php"); ?>
 

@@ -1,5 +1,5 @@
-<?php include("../config.php");?>
 <?php session_start(); ?>
+<?php include("../config.php");?>
 
 <?php
     $city;

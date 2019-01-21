@@ -1,6 +1,6 @@
+<?php session_start(); ?>
 <?php include("../config.php");
         include_once("../server/functions.php"); ?>
-<?php session_start(); ?>
 
 <?php
     $id;
