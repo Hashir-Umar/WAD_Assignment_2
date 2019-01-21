@@ -10,8 +10,7 @@
 
         $regex_email = '/^[A-Za-z0-9]+\.?[A-Za-z0-9]+\@[a-z0-9]+\.[a-z]{2,4}(\.[a-z]{2,4})?$/';
           
-        //$regex_pass = "/^.{6,}$/";
-        $regex_pass = "/^.{2,}$/";
+        $regex_pass = "/^.{6,}$/";
 
         if(!preg_match($regex_email, $email))
         {

@@ -37,10 +37,6 @@
 			$CURRENT_PAGE = "Index"; 
 			$PAGE_TITLE = "Home Page";
 			break;
-		case "/".$page_reference."/pages/add-hostel.php":
-			$CURRENT_PAGE = "Add Hostel"; 
-			$PAGE_TITLE = "Add Your Hostel";
-			break;
 		case "/".$page_reference."/pages/hostel-admin.php":
 			$CURRENT_PAGE = "Hostel Admin Panel"; 
 			$PAGE_TITLE = "Hostel Admin Panel";

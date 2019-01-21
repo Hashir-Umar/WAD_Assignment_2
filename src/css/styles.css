@@ -5,6 +5,7 @@ html, body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
+  background: #F9F9F9;
 }
 
 section
@@ -192,7 +193,7 @@ section
 }
 
  #content {
-   background: #DFDFDF;
+   background: #F9F9F9;
    padding: 2rem 1rem;
    overflow: hidden;
  }

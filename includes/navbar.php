@@ -13,10 +13,25 @@
             <li class="nav-item">
                 <?php
 
-                    if(isset($_SESSION['user_account_type']) &&  $_SESSION['user_account_type'] == 2)
-                        echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/hostel-admin.php"> <i class="fa fa-tasks"></i> &nbsp; Manage Your Hostels </a>';
+                    if(isset($_SESSION['user_account_type']) &&  $_SESSION['user_account_type'] == 2) {
+                        echo '<a class="nav-link ';
+                        if($CURRENT_PAGE == "Hostel Admin Panel") 
+                            echo ' active" ';
+                        else
+                            echo '"';
+                        echo 'href="'.$domain.$root_folder.'pages/hostel-admin.php"> <i class="fa fa-tasks"></i> &nbsp; Manage Your Hostels </a>';
+                        
+                    }
                     else if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 3)
-                        echo '<a class="nav-link " href="'.$domain.$root_folder.'pages/admin-panel.php"> <i class="fa fa-tasks"></i> &nbsp; Admin Panel </a>';       
+                    {
+                        echo '<a class="nav-link ';
+                        if($CURRENT_PAGE == "Admin Panel") 
+                            echo ' active" ';
+                        else
+                            echo '"';
+
+                        echo 'href="'.$domain.$root_folder.'pages/admin-panel.php"> <i class="fa fa-tasks"></i> &nbsp; Admin Panel </a>';       
+                    }
                     else if(!isset($_SESSION['user_account_type']))
                         echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/login.php"> <i class="fa fa-sign-in-alt"></i> &nbsp; Login </a>';
                 ?>

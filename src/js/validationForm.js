@@ -10,8 +10,7 @@ function stringCheck()
     var regex_email = /^[A-Za-z0-9]+\.?[A-Za-z0-9]+\@[a-z0-9]+\.[a-z]{2,4}(\.[a-z]{2,4})?$/gm;
     
     
-    // var regex_pass = /^.{6,}$/gm;
-    var regex_pass = /^.{2,}$/gm;
+    var regex_pass = /^.{6,}$/gm;
 
     var email_match = email.match(regex_email);
     var pass_match = password.match(regex_pass);
