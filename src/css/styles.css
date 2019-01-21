@@ -342,3 +342,26 @@ section
 input:focus {
   outline: 0;
 }
+
+/* admin-hostel page */
+.hover-pointer:hover
+{
+ cursor: pointer;
+}
+
+.list-group-item
+{
+  background: white;
+}
+
+#admin-tab .image-wraper
+{
+  width: 120px;
+  height: 70px;
+}
+
+#admin-tab .button-section button
+{
+  margin-bottom: 2px;
+  color: white;
+}

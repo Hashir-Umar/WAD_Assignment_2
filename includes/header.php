@@ -16,5 +16,6 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans|Poppins" rel="stylesheet">
 
     <link rel="shortcut icon" href="<?php echo $src_folder."/images/icon.ico"; ?>" />
+    <link rel="stylesheet" href="<?php echo $src_folder."/css/bootstrap.css"; ?>">
     <link rel="stylesheet" href="<?php echo $src_folder."/css/styles.css"; ?>">
 </head>

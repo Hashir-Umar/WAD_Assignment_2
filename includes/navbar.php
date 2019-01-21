@@ -10,7 +10,13 @@
             <a class="nav-link <?php if($CURRENT_PAGE == "Index") echo " active"; ?>" href="<?php echo $domain.$root_folder."index.php"; ?>"><i class="fas fa-home"></i> &nbsp; Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo $domain.$root_folder."pages/add-hostel.php"; ?>"> <i class="fa fa-plus"></i> &nbsp; Add Your Hostel</a>
+            <?php 
+            if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 2)
+                echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/hostel-admin.php"> <i class="fa fa-tasks"></i> &nbsp; Manage Your Hostels </a>';
+            else
+                echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/login.php"> <i class="fa fa-sign-in-alt"></i> &nbsp; Login/Register </a>';
+            ?>
+
         </li>
         <li class="nav-item">
             <a class="nav-link <?php if($CURRENT_PAGE == "About") echo " active"; ?>" href="<?php echo $domain.$root_folder."pages/about-us.php"; ?>"><i class="fa fa-user"></i> &nbsp; Meet Our Members</a>

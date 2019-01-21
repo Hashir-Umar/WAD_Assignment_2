@@ -2,25 +2,6 @@
 <?php include_once("../includes/header.php"); ?>
 <?php session_start(); ?>
 
-<?php
-    require_once "../server/database_connection.php";
-    
-    if(isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']))
-    {
-        $msg = $_SESSION['error_msg'];
-        if(!preg_match('/success/',  $msg))
-        {
-            echo "<div class='alert alert-danger mt-4' role='alert'>";
-            echo "<strong>Error: </strong>"; 
-                echo $msg;
-            echo "</div>";
-        }
-
-        $_SESSION['error_msg'] = "";
-    }
-?>
-
-
 <body style="height: 100vh; background: #F9F9F9;" class="d-flex justify-content-center align-items-center">
 
 <div class="container">
@@ -30,6 +11,22 @@
                 <div class="logo-container text-center mb-4">
                     <div class="logo d-inline font-20 margin-left-70"> <a href="<?php echo $domain.$root_folder."index.php"; ?>">HOSTEL</a></div>
                 </div> 
+                <?php
+                    require_once "../server/database_connection.php";
+                    if(isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']))
+                    {
+                        $msg = $_SESSION['error_msg'];
+                        if(!preg_match('/success/',  $msg))
+                        {
+                            echo "<div class='alert alert-danger mt-4' role='alert'>";
+                            echo "<strong>Error: </strong>"; 
+                                echo $msg;
+                            echo "</div>";
+                        }
+
+                        $_SESSION['error_msg'] = "";
+                    }
+                ?>
                 <div style="background:#ECECEC;" class="card mb-2">
                     <div class="card-header">
                         <h2 class="text-center"> Log<span>in</span>  </h2>

@@ -1,5 +1,6 @@
 <?php include("../config.php");?>
 <?php session_start(); ?>
+
 <?php
     $city;
     if (isset($_GET["city"]))

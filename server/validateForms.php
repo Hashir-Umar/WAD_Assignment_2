@@ -1,7 +1,5 @@
 <?php session_start(); ?>
 
-<!-- dummy id -->
-<?php $_SESSION['user_id'] = 1; ?>
 <?php
     include_once("functions.php");
     require_once "database_connection.php";
@@ -12,7 +10,8 @@
 
         $regex_email = '/^[A-Za-z0-9]+\.?[A-Za-z0-9]+\@[a-z0-9]+\.[a-z]{2,4}(\.[a-z]{2,4})?$/';
         
-        $regex_pass = "/^.*(?=.{6,})(?=.*[a-zA-Z])[a-zA-Z0-9]+$/";
+        //$regex_pass = "/^.*(?=.{6,})(?=.*[a-zA-Z])[a-zA-Z0-9]+$/";
+        $regex_pass = "/^\d+/";
 
         if(!preg_match($regex_email, $email))
         {
@@ -28,12 +27,14 @@
             die();
         }
 
-
         $sql = "SELECT  * FROM `users` WHERE user_email = '$email' AND  user_password = '$pass'";
         $result = $conn->query($sql);
 
         if($result->num_rows > 0)
-        {
+        {   
+            $row = mysqli_fetch_assoc($result);
+            $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['user_account_type'] = $row['user_account_type'];
             header('Location: ../index.php'); 
         }
         else
