@@ -141,6 +141,8 @@
                     </li>
                     <?php
                         $sql = "select * from `pending_hostels` where hostel_owner=".$admin_id;
+                        if($city != "")
+                            $sql = "select * from `pending_hostels` WHERE hostel_city='$city'";
                         $result = mysqli_query($conn, $sql);
                         if(!$result) {
                             die("Error description: " . mysqli_error($conn));
