@@ -2,7 +2,11 @@
 <?php include("../config.php");?>
 <?php include_once("../includes/header.php");
       include_once("../server/database_connection.php");
-      include_once("../server/functions.php");?>
+      include_once("../server/functions.php");
+      $account_type = 3;
+      ?>
+
+
 <body>
 
     <?php include("../includes/navbar.php");?>

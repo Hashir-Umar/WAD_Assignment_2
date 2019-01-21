@@ -26,7 +26,7 @@
                 <a class="nav-link <?php if($CURRENT_PAGE == "Contact") echo " active"; ?>" href="<?php echo $domain.$root_folder."pages/contact-us.php"; ?>" class="nav-link"> <i class="fas fa-envelope"></i> &nbsp; Contact Us</a>
             </li>
             <?php 
-                if($account_type == 1)
+                if($account_type == 1 || $account_type == 3)
                 {
                     echo'<li class="nav-item">';
                         echo '<a class="nav-link"';
