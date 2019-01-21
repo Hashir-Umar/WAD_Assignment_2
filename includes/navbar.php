@@ -14,6 +14,8 @@
                 <?php 
                 if($account_type == 2)
                     echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/hostel-admin.php"> <i class="fa fa-tasks"></i> &nbsp; Manage Your Hostels </a>';
+                else if($account_type == 3)
+                    echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/admin-panel.php"> <i class="fa fa-tasks"></i> &nbsp; Admin Panel </a>';       
                 else if($account_type == 0)
                     echo '<a class="nav-link" href="'.$domain.$root_folder.'pages/login.php"> <i class="fa fa-sign-in-alt"></i> &nbsp; Login/Register </a>';
                 ?>

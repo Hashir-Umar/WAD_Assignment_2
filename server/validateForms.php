@@ -35,7 +35,12 @@
             $row = mysqli_fetch_assoc($result);
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['user_account_type'] = $row['user_account_type'];
-            header('Location: ../index.php'); 
+            if($row['user_account_type'] == 3)
+            {
+                header('Location: ../pages/admin-panel.php'); 
+            }
+            else
+                header('Location: ../index.php'); 
         }
         else
         {

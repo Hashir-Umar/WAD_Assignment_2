@@ -112,6 +112,7 @@
 		('user1@test.com', '123', 1), 
 		('user2@test.com', '123', 1),
 		('admin@test.com', '123', 2),
+		('admin1@test.com', '123', 2),
 		('owner@test.com', '123', 3);";
 
 		if(!mysqli_query($conn, $sql)) {
@@ -138,9 +139,9 @@
 		$sql = "INSERT INTO `pending_hostels`
 			( hostel_name, hostel_city, hostel_address, hostel_rooms, hostel_extras, hostel_owner, hostel_img )
 			VALUES
-			('hostel1', 'Lahore', 'Johar town 12', '12', 'AC, fridge', '2', 'src/hostel_images/1_1.jpg'), 
-			('hostel2', 'Islamabad', 'Johar town 92', '9', 'AC, fridge', '2', 'src/hostel_images/1_2.jpg'), 
-			('hostel3', 'Karachi', 'Johar town 102', '3', 'AC, fridge', '2', 'src/hostel_images/1_3.jpg');";
+			('hostel1', 'Lahore', 'Johar town 12', '12', 'AC, fridge', '3', 'src/hostel_images/1_1.jpg'), 
+			('hostel2', 'Islamabad', 'Johar town 92', '9', 'AC, fridge', '3', 'src/hostel_images/1_2.jpg'), 
+			('hostel3', 'Karachi', 'Johar town 102', '3', 'AC, fridge', '4', 'src/hostel_images/1_3.jpg');";
 
 			$result = mysqli_query($conn, $sql);
 			if(!$result) {
@@ -154,9 +155,9 @@
 		$sql = "INSERT INTO `hostels`
 			( hostel_name, hostel_city, hostel_address, hostel_rooms, hostel_extras, hostel_owner, hostel_img )
 			VALUES
-			('hostel4', 'Peshawar', 'Murree town 53', '12', 'Double bed', '2', 'src/hostel_images/1_4.jpg'), 
-			('hostel5', 'Peshawar', 'Murree town 345', '9', 'heater, Double bed', '2', 'src/hostel_images/1_5.jpg'), 
-			('hostel6', 'Quetta', 'Murree town 123', '3', 'AC, heater, Double bed', '2', 'src/hostel_images/1_6.jpg');";
+			('hostel4', 'Peshawar', 'Murree town 53', '12', 'Double bed', '4', 'src/hostel_images/1_4.jpg'), 
+			('hostel5', 'Peshawar', 'Murree town 345', '9', 'heater, Double bed', '4', 'src/hostel_images/1_5.jpg'), 
+			('hostel6', 'Quetta', 'Murree town 123', '3', 'AC, heater, Double bed', '3', 'src/hostel_images/1_6.jpg');";
 
 			$result = mysqli_query($conn, $sql);
 			if(!$result) {

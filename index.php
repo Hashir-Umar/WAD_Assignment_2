@@ -13,8 +13,13 @@
   {
     $account_type = 2;
   }
+  else if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 3)
+  {
+    $account_type = 3;
+  }
   
 ?>
+
 
 <body class="container-fluid"> 
 
