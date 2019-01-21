@@ -40,8 +40,32 @@
     </div>
     </nav>
 
-    <div class="container mt-4">
+    <div class="wrapper mt-4">
         <h1 class="text-center">Your Hostels</h1>
+        <?php
+            if(isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']))
+            {
+                $msg = $_SESSION['error_msg'];
+                if(!preg_match('/successfully/',  $msg))
+                {
+                    echo "<div class='alert alert-danger mt-4' role='alert'>";
+                    echo "<strong>Error: </strong>"; 
+                        echo $msg;
+                    echo "</div>";
+                }
+                else
+                {
+                    echo "<div class='alert alert-success alert-dismissible fade show mt-4' role='alert'>";
+                        echo "<button type='button' class='close' data-dismiss='alert' aria-label='Close'>";
+                            echo "<span aria-hidden='true'>&times;</span>";
+                        echo "</button>";
+                        echo $msg;
+                    echo "</div>";
+                }
+
+                $_SESSION['error_msg'] = "";
+            }
+        ?>
     </div>
 
     <section id="admin-tab">
@@ -67,7 +91,7 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item d-flex justify-content-between">
                         <h3>Live Hostels</h3>
-                        <a class="btn btn-md btn-success" href="add-hostel.php"><i class="fas fa-plus mr-2"></i>Add New Hostel</a>
+                        <button type="button" class="btn btn-md btn-success" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus mr-2"></i>Add New Hostel</button>
                     </li>
 
                     <?php
@@ -152,6 +176,74 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add your hostel data</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                
+                <!-- Start add hostel form -->
+                    <div class="container-fluid">
+                        <h1 class="text-center my-4"> Fill this out </h1>
+                        <form name = "uploadHostel" action = "<?php echo $domain.$root_folder."server/validateForms.php"; ?>" method = "POST" enctype = "multipart/form-data">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="input-group mb-1 mb-md-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fas fa-file-signature"></i></div>
+                                        </div>
+                                        <input class="form-control" type="text" name="hostel_name" placeholder="Hostel name" >
+                                    </div>
+                                    <div class="input-group mb-1 mb-md-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fas fa-city"></i></div>
+                                        </div>
+                                        <select class="form-control" id="City" name="hostel_city" >
+                                            <option value="" disabled selected>Select your City</option>
+                                            <option value="Lahore">Lahore</option>
+                                            <option value="Islamabad">Islamabad</option>
+                                            <option value="Karachi">Karachi</option>
+                                            <option value="Faisalabad">Faisalabad</option>
+                                            <option value="Peshawar">Peshawar</option>
+                                            <option value="Quetta">Quetta</option>
+                                        </select>
+                                    </div>
+                                    <div class="input-group mb-1 mb-md-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fas fa-map-marked-alt"></i></div>
+                                        </div>
+                                        <input class="form-control" type="text" name="hostel_address" placeholder ="Address" >
+                                    </div>
+                                    <div class="input-group mb-1 mb-md-2">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text"><i class="fas fa-door-open"></i></div>
+                                        </div>
+                                        <input class="form-control" type="number" name="hostel_rooms" placeholder="Rooms Available" >
+                                    </div>
+
+                                    <textarea name="hostel_extras" placeholder="Additional Facilities" class="col-12" rows="5"></textarea>
+                                    
+                                    <!-- <input type="hidden" name="MAX_FILE_SIZE" value="30000" /> -->
+                                    <div class="input-group-text mb-2"><i class="far fa-images"></i>&nbsp Select an image<input name = "user_file" id = "file" class = "btn" type = "file" ></div>
+                                    <button type="submit" name="uploadHostel" class="btn btn-block btn-outline-dark mb-1 mb-md-2"> Add Hostel </button>
+                                    
+                                </div>
+                            </div> 
+                        </form>
+                    </div>
+                    <!-- END add hostel form -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
 
 </body>
 <?php include_once('../includes/footer.php'); ?>
