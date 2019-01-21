@@ -13,7 +13,7 @@
 			$CURRENT_PAGE = "About"; 
 			$PAGE_TITLE = "About Us";
             break;
-        case "/".$page_reference."/admin/admin-panel.php":
+        case "/".$page_reference."/pages/admin-panel.php":
 			$CURRENT_PAGE = "Admin Panel"; 
 			$PAGE_TITLE = "Admin Panel";
             break;
@@ -42,8 +42,11 @@
 			$PAGE_TITLE = "Add Your Hostel";
 			break;
 		case "/".$page_reference."/pages/hostel-admin.php":
-			$CURRENT_PAGE = "Admin Panel"; 
-			$PAGE_TITLE = "Admin Panel";
+			$CURRENT_PAGE = "Hostel Admin Panel"; 
+			$PAGE_TITLE = "Hostel Admin Panel";
+			break;
+		case "/".$page_reference."/pages/display-hostel.php":
+			$CURRENT_PAGE = "Search City"; 
 			break;
 		default:
 			$CURRENT_PAGE = "Hostels Website";
