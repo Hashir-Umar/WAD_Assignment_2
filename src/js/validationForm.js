@@ -42,11 +42,13 @@ function validatePassword(password) {
 function handleChange(checkbox) {
     var div = document.getElementById("phone_div");
     var phn = document.getElementById("phone");
+    var account_type = document.getElementById("user_account_type");
 
     if(checkbox.checked == true){
         phn.style.display = "block";
         div.style.display = "block";
         phn.value = "";
+        account_type.value = '2';
     }
     else
     {

@@ -30,6 +30,10 @@
 	$sql = 'CREATE TABLE IF NOT EXISTS `pending_users` (
 		`user_id` int(11) NOT NULL AUTO_INCREMENT,
 		`user_email` varchar(30) NOT NULL,
+		`user_fname` varchar(30) NOT NULL,
+		`user_lname` varchar(30) NOT NULL,
+		`user_Gender` varchar(10) NOT NULL,
+		`user_p_no` varchar(30) NOT NULL,
 		`user_password` varchar(255) NOT NULL,
 		`user_account_type` TINYINT NOT NULL,
 		PRIMARY KEY (`user_id` ,`user_email`)

@@ -20,13 +20,13 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fas fa-file-signature"></i></div>
                                         </div>
-                                        <input class="form-control" type="text" name="edit_hostel_name" placeholder="Hostel name" >
+                                        <input class="form-control" type="text" name="edit_hostel_name" placeholder="Hostel name" required>
                                     </div>
                                     <div class="input-group mb-1 mb-md-2">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fas fa-city"></i></div>
                                         </div>
-                                        <select class="form-control" id="City" name="edit_hostel_city" >
+                                        <select class="form-control" id="City" name="edit_hostel_city" required>
                                             <option value="" disabled selected>Select your City</option>
                                             <option value="Lahore">Lahore</option>
                                             <option value="Islamabad">Islamabad</option>
@@ -40,13 +40,13 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fas fa-map-marked-alt"></i></div>
                                         </div>
-                                        <input class="form-control" type="text" name="edit_hostel_address" placeholder ="Address" >
+                                        <input class="form-control" type="text" name="edit_hostel_address" placeholder ="Address" required>
                                     </div>
                                     <div class="input-group mb-1 mb-md-2">
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fas fa-door-open"></i></div>
                                         </div>
-                                        <input class="form-control" type="number" name="edit_hostel_rooms" placeholder="Rooms Available" >
+                                        <input class="form-control" type="number" name="edit_hostel_rooms" placeholder="Rooms Available" required>
                                     </div>
 
                                     <textarea name="edit_hostel_extras" placeholder="Additional Facilities" class="col-12" rows="5"></textarea>
@@ -86,13 +86,13 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-file-signature"></i></div>
                                     </div>
-                                    <input class="form-control" type="text" name="edit_hostel_name" placeholder="Hostel name" >
+                                    <input class="form-control" type="text" name="edit_hostel_name" placeholder="Hostel name" required>
                                 </div>
                                 <div class="input-group mb-1 mb-md-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-city"></i></div>
                                     </div>
-                                    <select class="form-control" id="City" name="edit_hostel_city" >
+                                    <select class="form-control" id="City" name="edit_hostel_city" required>
                                         <option value="" disabled selected>Select your City</option>
                                         <option value="Lahore">Lahore</option>
                                         <option value="Islamabad">Islamabad</option>
@@ -106,13 +106,13 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-map-marked-alt"></i></div>
                                     </div>
-                                    <input class="form-control" type="text" name="edit_hostel_address" placeholder ="Address" >
+                                    <input class="form-control" type="text" name="edit_hostel_address" placeholder ="Address" required>
                                 </div>
                                 <div class="input-group mb-1 mb-md-2">
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-door-open"></i></div>
                                     </div>
-                                    <input class="form-control" type="number" name="edit_hostel_rooms" placeholder="Rooms Available" >
+                                    <input class="form-control" type="number" name="edit_hostel_rooms" placeholder="Rooms Available" required>
                                 </div>
 
                                 <textarea name="edit_hostel_extras" placeholder="Additional Facilities" class="col-12" rows="5"></textarea>

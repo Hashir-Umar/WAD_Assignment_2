@@ -11,13 +11,34 @@
  <body style="height: 100vh; background: #F9F9F9;" class="d-flex justify-content-center align-items-center">
 
 <div class="container">
-<form name = "submit" action = "<?php echo $domain.$root_folder."server/validateForms.php"; ?>" onsubmit = "return validate()" method ="POST" enctype="multipart/form-data">
+    <form name = "signup" action = "<?php echo $domain.$root_folder."server/validateForms.php"; ?>" onsubmit = "return validate()" method ="POST" enctype="multipart/form-data">
         <div class="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
             <div class="container">
                 <div class="logo-container text-center mb-4">
                     <div class="logo d-inline font-20 margin-left-70"> <a href="<?php echo $domain.$root_folder."index.php"; ?>">HOSTEL</a></div>
                 </div> 
-                
+                <?php
+                    require_once "../server/database_connection.php";
+                    if(isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']))
+                    {
+                        $msg = $_SESSION['error_msg'];
+                        if(!preg_match('/success/',  $msg))
+                        {
+                            echo "<div class='alert alert-danger mt-4' role='alert'>";
+                            echo "<strong>Error: </strong>"; 
+                                echo $msg;
+                            echo "</div>";
+                        }
+                        else
+                        {
+                            echo "<div class='alert alert-success mt-4' role='alert'>";
+                            echo $msg;
+                            echo "</div>";
+                        }
+
+                        $_SESSION['error_msg'] = "";
+                    }
+                ?>
                 <div style="background:#ECECEC;" class="card mb-2">
                     <div class="card-header">
                         <h1 class="text-center"> Sign<span>up </span></h1>
@@ -74,7 +95,7 @@
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <button type="submit" name = "submit" class="btn btn-md btn-dark px-4"> Register </button>
                             <div class="mb-2"> 
-                                <input id = "user_account_type" type="checkbox" onchange='handleChange(this);' name="user_account_type" value="1"> Check this box to add Hostels?<br>
+                                <input id = "user_account_type" type="checkbox" onchange='handleChange(this);' name="user_account_type" value="2"> Check this box to add Hostels?<br>
                             </div>                
                         </div>      
                     </div>

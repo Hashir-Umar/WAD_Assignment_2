@@ -146,8 +146,7 @@
 
         $email_regex = '/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
         $pass_regex =  "/^.{6,}$/";
-
-
+        
         $fname = $_POST['first_name'];
         $lname = $_POST['last_name'];
         $phone_no = $_POST['phone'];
@@ -155,29 +154,48 @@
         $password = $_POST['password'];
         $Gender = $_POST['Gender'];
         $cnfrm_pass = $_POST['confirm_password'];
-        $user_account_type = '1';
+        $user_account_type = 2;
+        
+        if(!isset($_POST['user_account_type']))
+            $user_account_type = 1;
+        
+        if(!preg_match($email_regex,  $email))
+        {
+            $_SESSION['error_msg'] = "Email is invalid.";
+            header("Location: ../pages/signup.php");
+            die();
+        }
+        if(!preg_match($pass_regex,  $password))
+        {
+            $_SESSION['error_msg'] = "Password length should be 6 or greater.";
+            header("Location: ../pages/signup.php");
+            die();
+        }
+        
+        if($cnfrm_pass != $password)
+        {
+            $_SESSION['error_msg'] = "Password does not match.";
+            header("Location: ../pages/signup.php");
+            die();
+        }
 
         $sql = "SELECT  * FROM `users` WHERE user_email = '$email'";
-            $result = $conn->query($sql);
+        $result = $conn->query($sql);
 
-        
-        if((preg_match($email_regex,  $email)) && (preg_match($pass_regex,  $password)))
+        if($result->num_rows > 0)
         {
-            if($result->num_rows > 0)
-            {
-                header("Location: ../pages/signup.php");
-            }
-            else
-            {  
-                if(empty($_POST['user_account_type']))
-                {
-                    $phone_no = "";
-                    $user_account_type = '0';
-                }
-                header('Location: ../index.php'); 
-                insertData($conn,$fname,$lname,$Gender,$email, $password,$phone_no,$user_account_type);
-            }
+            $_SESSION['error_msg'] = "Entered email is already present.";
+            header("Location: ../pages/signup.php");
         }
+        else
+        {  
+            if($user_account_type == 1) {
+                $phone_no = "";
+            }
+            insertData($conn,$fname,$lname,$Gender,$email, $password,$phone_no,$user_account_type);
+        }
+        
+        
 	}
 
 ?>
