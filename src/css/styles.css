@@ -382,3 +382,12 @@ input:focus {
   margin-bottom: 2px;
   color: white;
 }
+
+/*contect us footer*/
+
+.footer_contact {
+	position: absolute;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
