@@ -63,7 +63,7 @@
         if (!preg_match('/image/', $_FILES['user_file']['type']))
         {
             $_SESSION['error_msg'] = "Non-image files are not allowed!";
-            header("Location: ../pages/add-hostel.php");
+            header("Location: ../pages/hostel-admin.php");
             die();
         }
         
@@ -83,15 +83,15 @@
 
         if (!preg_match($hostel_name_regex,  $hostel_name))  {
             $_SESSION['error_msg'] = "Hostel name not valid";
-            header("Location: ../pages/add-hostel.php");
+            header("Location: ../pages/hostel-admin.php");
         }
         else if (!preg_match($hostel_city_regex,  $hostel_city))  {
             $_SESSION['error_msg'] = "City name not valid";
-            header("Location: ../pages/add-hostel.php");
+            header("Location: ../pages/hostel-admin.php");
         }
         else if (!preg_match($hostel_address_regex,  $hostel_address))  {
             $_SESSION['error_msg'] = "Address not valid";
-            header("Location: ../pages/add-hostel.php");
+            header("Location: ../pages/hostel-admin.php");
         }
         else {
             $hostel_owner = $_SESSION['user_id'];
@@ -107,10 +107,10 @@
             
             if (move_uploaded_file($hostel_image_temp_name, '../'.$uploaddir)) {
                 $_SESSION['error_msg'] = "Your hostel has been successfully sent for review by our team. You will be notified once it gets reviewed.";
-                header("Location: ../pages/add-hostel.php");
+                header("Location: ../pages/hostel-admin.php");
             } else {
                 $_SESSION['error_msg'] = "Error occured while uploading image.";
-                header("Location: ../pages/add-hostel.php");
+                header("Location: ../pages/hostel-admim.php");
             }
         }
     }
