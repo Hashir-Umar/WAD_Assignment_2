@@ -23,25 +23,10 @@
 ?>
 <body style="overflow: hidden; background: #F9F9F9;">
 
-    <nav class="navbar navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="<?php echo $domain.$root_folder ?>"><span class="logo d-none d-md-inline">HOSTEL</span></a>
-        <div class="float-left">
-            <div class="d-flex align-items-center">
-                <form class="form-inline py-2">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-                </form>
-                <div class="hover-pointer mx-2"><i class="fa fa-bell"></i></div>
-                <div class="hover-pointer mx-2">Hashir</div>
-                <a href="logout.php" class="hover-pointer"><i class="fas fa-sign-out-alt mx-2"></i>Logout</a>
-            </div>
-        </div>
-    </div>
-    </nav>
+    <?php include_once("../includes/navbar.php"); ?>
 
     <div class="wrapper mt-4">
-        <h1 class="text-center">Your Hostels</h1>
+        <h1 class="text-center mb-4">Manage Your Hostels</h1>
         <?php
             if(isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']))
             {
@@ -123,7 +108,18 @@
                                     echo '</div>';
                                     echo '<div class="button-section d-flex flex-column">';
                                         echo '<button class="btn btn-md btn-warning"><i class="fa fa-edit"></i></button>';
-                                        echo '<button class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>';
+                                        
+                                        echo "<button class='openDiag btn btn-md btn-danger'
+                                        data-toggle='modal'
+                                        data-id='../server/hostel-admin-control.php?delete_hostel_id=".$row['hostel_id']."&delete_hostel_img=".$row['hostel_img']."'
+                                        data-btn-type='btn-danger'
+                                        data-btn-text='Yes, Delete'
+                                        data-body='Are you sure you want to delete this hostel?'
+                                        data-title='Confirm Deletion'
+                                        data-target='#myModal1'>
+                                            <i class='fa fa-trash'></i>
+                                        </button>";
+
                                     echo '</div>';
                                 echo '</div>';
                             echo '</li>';
@@ -167,7 +163,18 @@
                                     echo '</div>';
                                     echo '<div class="button-section d-flex flex-column">';
                                         echo '<button class="btn btn-md btn-warning"><i class="fa fa-edit"></i></button>';
-                                        echo '<button class="btn btn-md btn-danger"><i class="fa fa-trash"></i></button>';
+
+                                        echo "<button class='openDiag btn btn-md btn-danger'
+                                        data-toggle='modal'
+                                        data-id='../server/hostel-admin-control.php?cancel_hostel_id=".$row['hostel_id']."&cancel_hostel_img=".$row['hostel_img']."'
+                                        data-btn-type='btn-danger'
+                                        data-btn-text='Yes, Cancel'
+                                        data-body='Are you sure you want to cancel this request?'
+                                        data-title='Confirm Cancelation'
+                                        data-target='#myModal1'>
+                                            <i class='fa fa-times'></i>
+                                        </button>";
+
                                     echo '</div>';
                                 echo '</div>';
                             echo '</li>';
@@ -246,6 +253,28 @@
         </div>
     </div>
     <!-- End Modal -->
+
+    <!-- start Modal for dialog massage-->
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Request Rejection</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this hostel?
+                </div>
+                <div class="modal-footer">
+                <a href='#'><button type="button" class="btn action">Yes, Delete</button></a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal for dialog massage -->
 
 </body>
 <?php include_once('../includes/footer.php'); ?>
