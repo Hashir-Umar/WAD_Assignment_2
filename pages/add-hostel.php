@@ -1,6 +1,6 @@
+<?php session_start(); ?>
 <?php include("../config.php");?>
 <?php include_once("../includes/header.php"); ?>
-<?php session_start(); ?>
 <body>
 
     <?php include_once("../includes/navbar.php"); ?>
