@@ -11,7 +11,7 @@
 <body style="height: 100vh; background: #F9F9F9;" class="d-flex justify-content-center align-items-center">
 
 <div class="container">
-    <form action="../server/validateForms.php" onsubmit="return stringCheck()" method ="POST">
+    <form action="../server/validateForms.php" onsubmit="return validateLogin()" method ="POST">
         <div class="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
             <div class="container">
                 <div class="logo-container text-center mb-4">
@@ -42,23 +42,24 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-envelope"></i></div>
                             </div>
-                            <input class="form-control" id= "email" type="text" name="email" placeholder ="Enter your Email" required>
+                            <input class="form-control" id="login-email" type="text" name="email" placeholder ="Enter your Email"  value="<?php echo @$_COOKIE['user_email']; ?>" required="">
                         </div>
 						<span id= "email_error" class="text-danger"> </span> 
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-key"></i></div>
                             </div>
-                            <input class="form-control" id= "password" type="password" name="password" placeholder="Password" required>
+                            <input class="form-control" id="login-password" type="password" name="password" placeholder="Password" value="<?php echo @$_COOKIE['user_password']; ?>" required="">
                         </div>
 						<span id= "pass_error" class="text-danger"> </span> 
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <button type="submit" name= "login" class="btn btn-md btn-dark px-4"> Login </button>
-                            <div class="mb-2"> <a href="<?php echo $domain.$root_folder."pages/forgot-password.php"; ?>"> <i class="fas fa-key"></i> Forgot your password?</a></div>                    
+                            <div class="mb-2"> <input type="checkbox" name="remember" id="remember"> Remember me </div>                    
                         </div>
                     </div>
-                    <div class="card-footer">
-                        <div class="d-flex justify-content-center"> <a href="<?php echo $domain.$root_folder."pages/signup.php"; ?>"> <i class="fas fa-sign-in-alt"></i> Create a free Account</a></div>                  
+                    <div class="card-footer d-flex justify-content-between">
+                        <div> <a href="<?php echo $domain.$root_folder."pages/signup.php"; ?>"> <i class="fas fa-sign-in-alt"></i> Create a free Account</a></div>                  
+                        <div class="mb-2"> <a href="<?php echo $domain.$root_folder."pages/forgot-password.php"; ?>"> <i class="fas fa-key"></i> Forgot your password?</a></div>
                     </div>
                 </div>
             </div>    
@@ -66,6 +67,7 @@
     </form>
 </div>
 
-
-</body>
 <?php include_once("../includes/footer.php"); ?>
+<script>
+    
+</script>

@@ -1,15 +1,16 @@
-<?php session_start(); ?>
+<?php 
+    session_start(); 
+?>
 
 <?php
     include_once("functions.php");
     require_once "database_connection.php";
     
     if(isset($_POST['login'])){
-        $email = $_POST['email'];
-        $pass = $_POST['password'];
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $pass = mysqli_real_escape_string($conn, $_POST['password']);
 
-        $regex_email = '/^[A-Za-z0-9]+\.?[A-Za-z0-9]+\@[a-z0-9]+\.[a-z]{2,4}(\.[a-z]{2,4})?$/';
-          
+        $regex_email = '/^[A-Za-z0-9]+\.?[A-Za-z0-9]+\@[a-z0-9]+\.[a-z]{2,4}(\.[a-z]{2,4})?$/';          
         $regex_pass = "/^.{6,}$/";
 
         if(!preg_match($regex_email, $email))
@@ -34,6 +35,15 @@
             $row = mysqli_fetch_assoc($result);
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['user_account_type'] = $row['user_account_type'];
+            
+            if(!empty($_POST['remember'])) {
+                setcookie('user_email', $email, time() + (182 * 24 * 60 * 60));
+                setcookie('user_password', $pass, time() + (182 * 24 * 60 * 60));
+            } else {
+                setcookie('user_email','' );
+                setcookie('user_password', '');
+            }
+
             if($row['user_account_type'] == 3)
             {
                 header('Location: ../pages/admin-panel.php'); 
@@ -151,10 +161,10 @@
         $fname = $_POST['first_name'];
         $lname = $_POST['last_name'];
         $phone_no = $_POST['phone'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $email = mysqli_real_escape_string($conn, $_POST['email']);
+        $password = mysqli_real_escape_string($conn, $_POST['password']);
         $Gender = $_POST['Gender'];
-        $cnfrm_pass = $_POST['confirm_password'];
+        $cnfrm_pass = mysqli_real_escape_string($conn, $_POST['confirm_password']);
         $user_account_type = 2;
         
         if(!isset($_POST['user_account_type']))
@@ -180,23 +190,47 @@
             die();
         }
 
-        $sql = "SELECT  * FROM `users` WHERE user_email = '$email'";
-        $result = $conn->query($sql);
+        $sql1 = "SELECT  * FROM `users` WHERE user_email = '$email'";
+        $result1 = $conn->query($sql1);
 
-        if($result->num_rows > 0)
+        $sql2 = "SELECT  * FROM `pending_users` WHERE user_email = '$email'";
+        $result2 = $conn->query($sql2);
+
+        if($result1->num_rows > 0 || $result2->num_rows > 0)
         {
             $_SESSION['error_msg'] = "Entered email is already present.";
             header("Location: ../pages/signup.php");
         }
         else
-        {  
+        {   
             if($user_account_type == 1) {
                 $phone_no = "";
             }
             insertData($conn,$fname,$lname,$Gender,$email, $password,$phone_no,$user_account_type);
         }
-        
-        
-	}
+    }
+    else if(isset($_GET['checkEmail']))
+    {
+        $email_regex = '/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
+        $email = $_GET['checkEmail'];
+
+        if(preg_match($email_regex,  $email))
+        {
+            $sql1 = "SELECT  * FROM `users` WHERE user_email = '$email'";
+            $result1 = $conn->query($sql1);
+    
+            $sql2 = "SELECT  * FROM `pending_users` WHERE user_email = '$email'";
+            $result2 = $conn->query($sql2);
+    
+            if($result1->num_rows > 0 || $result2->num_rows > 0) {
+                echo "1";
+            }
+            else {
+                echo "0";
+            }
+        }
+        else
+            echo "1";
+    }
 
 ?>

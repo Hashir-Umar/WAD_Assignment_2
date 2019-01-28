@@ -389,3 +389,16 @@ input:focus {
 .vertical-align {
 	margin-top: 60px;
 }
+
+.input-group
+{
+  position: relative;
+}
+
+.loader-gif
+{
+  position: absolute;
+  right: 5px;
+  top: 2px;
+  z-index: 10;
+}

@@ -11,7 +11,7 @@
  <body style="height: 100vh; background: #F9F9F9;" class="d-flex justify-content-center align-items-center">
 
 <div class="container">
-    <form name = "signup" action = "<?php echo $domain.$root_folder."server/validateForms.php"; ?>" onsubmit = "return validate()" method ="POST" enctype="multipart/form-data">
+    <form name = "signup" action = "<?php echo $domain.$root_folder."server/validateForms.php"; ?>" onsubmit = "return validateSignup()" method ="POST" enctype="multipart/form-data">
         <div class="col-sm-12 offset-md-2 col-md-8 offset-lg-3 col-lg-6">
             <div class="container">
                 <div class="logo-container text-center mb-4">
@@ -48,19 +48,19 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-user"></i></div>
                             </div>
-                            <input class="form-control"id = "first_name"  type="text" name="first_name" placeholder="first name" required>
+                            <input class="form-control" id = "signup-first-name" onkeyup="if(validateName(this.value)) {this.style.borderColor='green'} else {this.style.borderColor='red'}"  type="text" name="first_name" placeholder="first name" required>
                         </div>
                         <div class="input-group mb-1 mb-md-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-user"></i></div>
                             </div>
-                            <input class="form-control" id = "last_name" type="text" name="last_name" placeholder="last name" required>
+                            <input class="form-control" id = "signup-last-name" onkeyup="if(validateName(this.value)) {this.style.borderColor='green'} else {this.style.borderColor='red'}" type="text" name="last_name" placeholder="last name" required>
                         </div>
                         <div class="input-group mb-1 mb-md-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fa fa-mars"></i></div>
                             </div>
-                            <select class="form-control" id="Gender" name="Gender" required>
+                            <select class="form-control" id="gender" name="Gender" required>
                                 <option>Male</option>
                                 <option>Female</option>
                             </select>
@@ -69,32 +69,33 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-envelope"></i></div>
                             </div>
-                            <input class="form-control" id="email" type="text" name="email" placeholder ="Enter your Email" required>
+                            <input class="form-control" onkeyup="isEmailUnique(this.value)"  id="signup-email" type="text" name="email" placeholder ="Enter your Email" required>
+                            <div class="loader-gif"></div>
                         </div>
                         <span id= "email_error" class="text-danger"> </span> 
                         <div  class="input-group mb-1 mb-md-2">
                             <div class="input-group-prepend">
-                                <div  id = "phone_div"  style="display: none"class="input-group-text"><i class="fas fa-phone"></i></div>
+                                <div  id = "phone_div" style="display: none" class="input-group-text"><i class="fas fa-phone"></i></div>
                             </div>
-                            <input class="form-control" style="display: none" id="phone" type="tel" value="abc" name="phone" placeholder ="Enter your Phone No" required>
+                            <input class="form-control" onkeyup="if(validatePhone(this.value)) {this.style.borderColor='green'} else {this.style.borderColor='red'}" style="display: none" id="phone" type="number" name="signup-phone" placeholder ="Enter your Phone No">
                         </div>
                         <div class="input-group mb-1 mb-md-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-key"></i></div>
                             </div>
-                            <input class="form-control" id = "password" type="password" name="password" placeholder="Password" required>
+                            <input class="form-control" id="signup-password" onkeyup="if(validatePassword(this.value)) {this.style.borderColor='green'} else {this.style.borderColor='red'}" type="password" name="password" placeholder="Password" required>
                         </div>
                         <span id= "pass_error" class="text-danger"> </span> 
                         <div class="input-group mb-1 mb-md-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-key"></i></div>
                             </div>
-                            <input class="form-control" id = "confirm_password" type="password" name="confirm_password" placeholder="Confirm your password" required>
+                            <input class="form-control" id = "signup-confirm-password" onkeyup="if(validatePassword(this.value)) {this.style.borderColor='green'} else {this.style.borderColor='red'}" type="password" name="confirm_password" placeholder="Confirm your password" required>
                         </div>
                         <span id= "cnfrm_pass_error" class="text-danger"> </span> 
-                        <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
                             <button type="submit" name = "submit" class="btn btn-md btn-dark px-4"> Register </button>
-                            <div class="mb-2"> 
+                            <div class="mb-2 text-center"> 
                                 <input id = "user_account_type" type="checkbox" onchange='handleChange(this);' name="user_account_type" value="2"> Check this box to add Hostels?<br>
                             </div>                
                         </div>      

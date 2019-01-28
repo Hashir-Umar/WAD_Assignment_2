@@ -26,7 +26,7 @@
     <?php include_once("../includes/navbar.php"); ?>
 
     <div class="wrapper mt-4">
-        <h1 class="text-center mb-4">Manage Your Hostels</h1>
+        <h1 class="text-center mb-4"><i class="fas fa-tasks"></i> &nbsp; Manage Your Hostels</h1>
         <?php
             if(isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']))
             {
@@ -60,7 +60,7 @@
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="fas fa-city"></i></div>
                     </div>
-                    <select class="form-control" id="City" name="city" required>
+                    <select class="form-control" id="live_city" name="city" required>
                         <option value="" disabled <?php if ($city == ""){echo "selected";} ?> >Select your City</option>
                         <option value="Lahore" <?php if ($city == "Lahore"){echo "selected";} ?> >Lahore</option>
                         <option value="Islamabad" <?php if ($city == "Islamabad"){echo "selected";} ?> >Islamabad</option>
@@ -68,6 +68,7 @@
                         <option value="Faisalabad" <?php if ($city == "Faisalabad"){echo "selected";} ?> >Faisalabad</option>
                         <option value="Peshawar" <?php if ($city == "Peshawar"){echo "selected";} ?> >Peshawar</option>
                         <option value="Quetta" <?php if ($city == "Quetta"){echo "selected";} ?> >Quetta</option>
+                        <input type="hidden" id="hostel_admin_id" name="hostel_admin_id" value="2">
                     </select>
                 </div>
                 <button id="btn" type="submit" class="btn btn-outline-dark col-2"> Search </button>
@@ -79,61 +80,73 @@
                         <button type="button" class="btn btn-md btn-success" data-toggle="modal" data-target="#myModal"><i class="fas fa-plus mr-2"></i>Add New Hostel</button>
                     </li>
 
-                    <?php
-                        
-                        $sql = "select * from `hostels` where hostel_owner=".$admin_id;
-                        if($city != "")
-                            $sql = "select * from `hostels` WHERE hostel_city='$city'";
-                        $result = mysqli_query($conn, $sql);
-                        if(!$result) {
-                            die("Error description: " . mysqli_error($conn));
-                        } 
-                        $count = mysqli_num_rows($result);
-                        
-                        while($count)
-                        {
-                            $row = mysqli_fetch_assoc($result);
-                            echo '<li class="list-group-item">';
-                                echo '<div class="d-flex justify-content-between align-items-center">';
-                                    echo '<div class="d-flex">';
-                                        echo '<div class="image-wraper d-inline-block text-center mb-3">';
-                                        echo '<img src="../'.$row['hostel_img'].'" height="100%" width="100%"/>';
-                                            echo '<div> <strong>'.$row['hostel_name'].'</strong></div>';
-                                        echo '</div>';
-                                        echo '<div class="hostel-details ml-2">';
-                                            echo '<strong>City: </strong> <span>'.$row['hostel_city'].'</span> <br/>';
-                                            echo '<strong>Address: </strong> <span>'.$row['hostel_address'].'</span> <br/>';
-                                            echo '<strong>Rooms Availible: </strong> <span>'.$row['hostel_rooms'].'</span> <br/>';
-                                        echo '</div>';
-                                    echo '</div>';
-                                    echo '<div class="button-section d-flex flex-column">';
-                                    
-                                    echo "<button class='openDialogHostel btn btn-md btn-warning'
-                                        data-toggle='modal'
-                                        data-hosteldata='".json_encode($row)."'
-                                        data-title='Edit your hostel info'
-                                        data-target='#myModalEditHostel'>
-                                            <i class='fa fa-edit'></i>
-                                        </button>";
-                                        
-                                        echo "<button class='openDiag btn btn-md btn-danger'
-                                        data-toggle='modal'
-                                        data-id='../server/hostel-admin-control.php?delete_hostel_id=".$row['hostel_id']."&delete_hostel_img=".$row['hostel_img']."'
-                                        data-btn-type='btn-danger'
-                                        data-btn-text='Yes, Delete'
-                                        data-body='Are you sure you want to delete this hostel?'
-                                        data-title='Confirm Deletion'
-                                        data-target='#myModal1'>
-                                            <i class='fa fa-trash'></i>
-                                        </button>";
+                    <div id="live-hostel-container">
 
-                                    echo '</div>';
-                                echo '</div>';
-                            echo '</li>';
-                            $count--;
-                        }
-                    ?>
+                        <?php
+                            
+                            $sql = "select * from `hostels` where hostel_owner=".$admin_id;
+                            if($city != "")
+                                $sql = "select * from `hostels` WHERE hostel_city='$city'";
+                            $result = mysqli_query($conn, $sql);
+                            if(!$result) {
+                                die("Error description: " . mysqli_error($conn));
+                            } 
+                            $count = mysqli_num_rows($result);
+                            
+                            if($count == 0)
+                            {
+                                echo '<li class="list-group-item">';
+                                echo 'No Result were Found for ';
+                                echo '&ldquo;'.$city.'&ldquo;';
+                                echo '</li>';
+                            }
+                            else
+                            {
+                                while($count)
+                                {
+                                    $row = mysqli_fetch_assoc($result);
+                                    echo '<li class="list-group-item">';
+                                        echo '<div class="d-flex justify-content-between align-items-center">';
+                                            echo '<div class="d-flex">';
+                                                echo '<div class="image-wraper d-inline-block text-center mb-3">';
+                                                echo '<img onclick=display("'.$row['hostel_id'].'"); src="../'.$row['hostel_img'].'" height="100%" width="100%"/>';
+                                                    echo '<div> <strong>'.$row['hostel_name'].'</strong></div>';
+                                                echo '</div>';
+                                                echo '<div class="hostel-details ml-2">';
+                                                    echo '<strong>City: </strong> <span>'.$row['hostel_city'].'</span> <br/>';
+                                                    echo '<strong>Address: </strong> <span>'.$row['hostel_address'].'</span> <br/>';
+                                                    echo '<strong>Rooms Availible: </strong> <span>'.$row['hostel_rooms'].'</span> <br/>';
+                                                echo '</div>';
+                                            echo '</div>';
+                                            echo '<div class="button-section d-flex flex-column">';
+                                            
+                                            echo "<button class='openDialogHostel btn btn-md btn-warning'
+                                                data-toggle='modal'
+                                                data-hosteldata='".json_encode($row)."'
+                                                data-title='Edit your hostel info'
+                                                data-target='#myModalEditHostel'>
+                                                    <i class='fa fa-edit'></i>
+                                                </button>";
+                                                
+                                                echo "<button class='openDiag btn btn-md btn-danger'
+                                                data-toggle='modal'
+                                                data-id='../server/hostel-admin-control.php?delete_hostel_id=".$row['hostel_id']."&delete_hostel_img=".$row['hostel_img']."'
+                                                data-btn-type='btn-danger'
+                                                data-btn-text='Yes, Delete'
+                                                data-body='Are you sure you want to delete this hostel?'
+                                                data-title='Confirm Deletion'
+                                                data-target='#myModal1'>
+                                                    <i class='fa fa-trash'></i>
+                                                </button>";
 
+                                            echo '</div>';
+                                        echo '</div>';
+                                    echo '</li>';
+                                    $count--;
+                                }
+                            }
+                        ?>
+                    </div>
                     
                 </ul>
             </div>
@@ -142,59 +155,72 @@
                     <li class="list-group-item">
                         <h3>Pending Requests</h3>
                     </li>
-                    <?php
-                        $sql = "select * from `pending_hostels` where hostel_owner=".$admin_id;
-                        if($city != "")
-                            $sql = "select * from `pending_hostels` WHERE hostel_city='$city'";
-                        $result = mysqli_query($conn, $sql);
-                        if(!$result) {
-                            die("Error description: " . mysqli_error($conn));
-                        } 
-                        $count = mysqli_num_rows($result);
-                        
-                        while($count)
-                        {
-                            $row = mysqli_fetch_assoc($result);
-                            echo '<li class="list-group-item">';
-                                echo '<div class="d-flex justify-content-between align-items-center">';
-                                    echo '<div class="d-flex">';
-                                        echo '<div class="image-wraper d-inline-block text-center mb-3">';
-                                        echo '<img src="../'.$row['hostel_img'].'" height="100%" width="100%"/>';
-                                            echo '<div> <strong>'.$row['hostel_name'].'</strong></div>';
-                                        echo '</div>';
-                                        echo '<div class="hostel-details ml-2">';
-                                            echo '<strong>City: </strong> <span>'.$row['hostel_city'].'</span> <br/>';
-                                            echo '<strong>Address: </strong> <span>'.$row['hostel_address'].'</span> <br/>';
-                                            echo '<strong>Rooms Availible: </strong> <span>'.$row['hostel_rooms'].'</span> <br/>';
-                                        echo '</div>';
-                                    echo '</div>';
-                                    echo '<div class="button-section d-flex flex-column">';
-                                        
-                                        echo "<button class='openDialogPendingHostel btn btn-md btn-warning'
-                                        data-toggle='modal'
-                                        data-hosteldata='".json_encode($row)."'
-                                        data-title='Edit your hostel info'
-                                        data-target='#myModalEditPendingHostel'>
-                                            <i class='fa fa-edit'></i>
-                                        </button>";
+                    <div id="pending-hostel-container">
 
-                                        echo "<button class='openDiag btn btn-md btn-danger'
-                                        data-toggle='modal'
-                                        data-id='../server/hostel-admin-control.php?cancel_hostel_id=".$row['hostel_id']."&cancel_hostel_img=".$row['hostel_img']."'
-                                        data-btn-type='btn-danger'
-                                        data-btn-text='Yes, Cancel'
-                                        data-body='Are you sure you want to cancel this request?'
-                                        data-title='Confirm Cancelation'
-                                        data-target='#myModal1'>
-                                            <i class='fa fa-times'></i>
-                                        </button>";
+                        <?php
+                            $sql = "select * from `pending_hostels` where hostel_owner=".$admin_id;
+                            if($city != "")
+                                $sql = "select * from `pending_hostels` WHERE hostel_city='$city'";
+                            $result = mysqli_query($conn, $sql);
+                            if(!$result) {
+                                die("Error description: " . mysqli_error($conn));
+                            } 
+                            $count = mysqli_num_rows($result);
+                            
+                            if($count == 0)
+                            {
+                                echo '<li class="list-group-item">';
+                                echo 'No Result were Found for ';
+                                echo '&ldquo;'.$city.'&ldquo;';
+                                echo '</li>';
+                            }
+                            else
+                            {
+                                while($count)
+                                {
+                                    $row = mysqli_fetch_assoc($result);
+                                    echo '<li class="list-group-item">';
+                                        echo '<div class="d-flex justify-content-between align-items-center">';
+                                            echo '<div class="d-flex">';
+                                                echo '<div class="image-wraper d-inline-block text-center mb-3">';
+                                                echo '<img src="../'.$row['hostel_img'].'" height="100%" width="100%"/>';
+                                                    echo '<div> <strong>'.$row['hostel_name'].'</strong></div>';
+                                                echo '</div>';
+                                                echo '<div class="hostel-details ml-2">';
+                                                    echo '<strong>City: </strong> <span>'.$row['hostel_city'].'</span> <br/>';
+                                                    echo '<strong>Address: </strong> <span>'.$row['hostel_address'].'</span> <br/>';
+                                                    echo '<strong>Rooms Availible: </strong> <span>'.$row['hostel_rooms'].'</span> <br/>';
+                                                echo '</div>';
+                                            echo '</div>';
+                                            echo '<div class="button-section d-flex flex-column">';
+                                                
+                                                echo "<button class='openDialogPendingHostel btn btn-md btn-warning'
+                                                data-toggle='modal'
+                                                data-hosteldata='".json_encode($row)."'
+                                                data-title='Edit your hostel info'
+                                                data-target='#myModalEditPendingHostel'>
+                                                    <i class='fa fa-edit'></i>
+                                                </button>";
 
-                                    echo '</div>';
-                                echo '</div>';
-                            echo '</li>';
-                            $count--;
-                        }
-                    ?>
+                                                echo "<button class='openDiag btn btn-md btn-danger'
+                                                data-toggle='modal'
+                                                data-id='../server/hostel-admin-control.php?cancel_hostel_id=".$row['hostel_id']."&cancel_hostel_img=".$row['hostel_img']."'
+                                                data-btn-type='btn-danger'
+                                                data-btn-text='Yes, Cancel'
+                                                data-body='Are you sure you want to cancel this request?'
+                                                data-title='Confirm Cancelation'
+                                                data-target='#myModal1'>
+                                                    <i class='fa fa-times'></i>
+                                                </button>";
+
+                                            echo '</div>';
+                                        echo '</div>';
+                                    echo '</li>';
+                                    $count--;
+                                }
+                            }
+                        ?>
+                    </div>
                 </ul>
             </div>
         </div>
@@ -294,3 +320,9 @@
 
 
 <?php include_once('../includes/footer.php'); ?>
+<script>
+function display(id)
+{
+   window.location.href="display-hostel.php?id="+id;
+}
+</script>
