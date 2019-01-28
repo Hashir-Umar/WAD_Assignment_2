@@ -69,10 +69,20 @@
 			exit();
 		}
 
-		$filepath = mysqli_fetch_assoc($result)['hostel_img'];
-		unlink("../".$filepath);
+		$sql = "SELECT hostel_pic FROM hostels_images WHERE pending_hostel_id = '$id';";
+		$imagesResult = mysqli_query($conn, $sql);
+		$totalImages = mysqli_num_rows($imagesResult);
 
-		$sql = "DELETE FROM pending_hostels WHERE hostel_id = $id;";
+		for ($var = 0; $var < $totalImages; $var++)
+		{
+			$path = mysqli_fetch_assoc($imagesResult)["hostel_pic"];
+			unlink("../".$path);
+		}
+
+		$sql = "DELETE FROM hostels_images WHERE pending_hostel_id = '$id';";
+		mysqli_query($conn, $sql);
+
+		$sql = "DELETE FROM pending_hostels WHERE hostel_id = '$id';";
 		if(mysqli_query($conn, $sql))
 		{
 			$_SESSION['admin_panel_msg'] = "Successfully rejected hostel request.";
