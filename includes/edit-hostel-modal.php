@@ -1,3 +1,9 @@
+<?php session_start(); ?>
+<?php
+    if(!isset($_SESSION['user_id'])) {
+        header("Location: ../index.php");
+    }
+?>
 <!-- edit hostel Modal -->
 <div class="modal fade" id="myModalEditHostel" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
