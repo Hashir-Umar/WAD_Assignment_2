@@ -4,6 +4,11 @@
 	include_once "functions.php";
 	session_start();
 
+	if(!isset($_SESSION['user_id'])) {
+		header("Location: ../index.php");
+		die();
+	}
+	
 	if (isset($_GET["accept_hostel_req"]))
 	{
 		$id = $_GET['accept_hostel_req'];
