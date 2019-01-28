@@ -146,8 +146,7 @@
                                 }
                             }
                         ?>
-                    </div>
-                    
+                    </div>      
                 </ul>
             </div>
             <div id="pending-hostel">
