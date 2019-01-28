@@ -1,16 +1,10 @@
-<?php 
-    session_start(); 
-    if(!isset($_SESSION['user_id'])) {
-		header("Location: ../index.php");
-		die();
-	}
-?>
-
 <?php
+    session_start();
     include_once("functions.php");
     require_once "database_connection.php";
     
     if(isset($_POST['login'])){
+       
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $pass = mysqli_real_escape_string($conn, $_POST['password']);
 
