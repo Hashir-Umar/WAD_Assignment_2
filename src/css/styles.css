@@ -402,3 +402,13 @@ input:focus {
   top: 2px;
   z-index: 10;
 }
+
+.image-wraper img
+{
+  transition: opacity .5s linear;
+}
+
+.image-wraper img:hover {
+  cursor: pointer;
+  opacity: .8;
+}

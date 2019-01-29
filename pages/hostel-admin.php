@@ -317,11 +317,10 @@
     </div>
     <!-- End Modal for dialog massage -->
 
-
-<?php include_once('../includes/footer.php'); ?>
 <script>
-function display(id)
-{
-   window.location.href="display-hostel.php?id="+id;
-}
+    function display(id)
+    {
+    window.location.href="display-hostel-data.php?hostel_id="+id;
+    }
 </script>
+<?php include_once('../includes/footer.php'); ?>

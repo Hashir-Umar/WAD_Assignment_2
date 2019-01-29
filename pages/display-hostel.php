@@ -12,35 +12,9 @@
     else
         $city = "";
 
-    //search by id
-    if (isset($_GET["id"]))
-        $id = $_GET["id"];
-    else
-        $id = "";
-
-    //search by name
-    if (isset($_GET["name"]))
-        $name = $_GET["name"];
-    else
-        $name = "";
-
-    //search by name and city
-    if (isset($_GET["name"]) && isset($_GET["name"])) {
-        $name = $_GET["name"];
-        $city = $_GET["city"];
-    }
-    else {
-        $name = "";
-        $city = "";
-    }
-
     include_once("../server/database_connection.php");
 
     $sql = "SELECT * FROM hostels WHERE hostel_city='$city'";
-    if($id != "")
-        $sql = "SELECT * FROM hostels WHERE hostel_id='$id'";
-    if($name != "")
-        $sql = "SELECT * FROM hostels WHERE hostel_name='$name'";
 
     $result = mysqli_query($conn, $sql);
     $num_results = mysqli_num_rows($result);
@@ -81,7 +55,29 @@
         </form>
         
         <div id="hostel-container" class="row">
-           
+            <?php
+                if($num_results == 0)
+                    echo '<div class="text-block font-15 padding-10"> No Result Found </div>';
+                else
+                {
+                    $output = "";
+                    for ($i = 0; $i < $num_results; $i++)
+                    {
+                        $assoc = mysqli_fetch_assoc($result);
+                        $name = $assoc['hostel_name'];
+                        $image = "../".$assoc['hostel_img'];
+                        $hostel_id = $assoc['hostel_id'];
+                        $rating = $assoc['hostel_rating'];
+                        $link = "display-hostel-data.php?hostel_id=$hostel_id";
+
+                        $stars = getStarsString($rating, 5);
+
+                        $output .= "<div class='text-center margin-top-10 col-sm-6 col-12 col-md-4'><div class='image-holder'><a href = '$link'><img alt='$name' class='img-fluid image-block' src='$image'></a></div><div class='font-15 text-block padding-10'> $name <br> Rating: $rating $stars</div></div>";
+                    }
+
+                    echo $output;
+                }
+            ?>
         </div>
 
      </div>    
