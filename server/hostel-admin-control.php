@@ -21,17 +21,42 @@
                 header("Location: ../pages/hostel-admin.php");
             } 
             else
-            {   
-                $sql = "delete from `hostels_images` where hostel_id=".$_GET["delete_hostel_id"];
-                $result = mysqli_query($conn, $sql);
-                $_SESSION['error_msg'] = "Your hostel has successfully deleted..";
-                
+            {                   
                 if(isset($_GET["cancel_hostel_id"])) {
-                    unlink("../".$_GET["cancel_hostel_img"]);
+
+                    $id = $_GET['cancel_hostel_id'];
+                   $sql = "SELECT hostel_pic FROM hostels_images WHERE pending_hostel_id = '$id';";
+                    $imagesResult = mysqli_query($conn, $sql);
+                    $totalImages = mysqli_num_rows($imagesResult);
+
+                    for ($var = 0; $var < $totalImages; $var++)
+                    {
+                        $path = mysqli_fetch_assoc($imagesResult)["hostel_pic"];
+                        unlink("../".$path);
+                    }
+
+                    $sql = "DELETE FROM hostels_images WHERE pending_hostel_id = '$id';";
+                    mysqli_query($conn, $sql);
+
                     $_SESSION['error_msg'] = "Your hostel request has successfully canceled..";
                 }
                 else
-                    unlink("../".$_GET["delete_hostel_img"]);
+                {
+                    $id = $_GET["delete_hostel_id"];
+                    $sql = "SELECT hostel_pic FROM hostels_images WHERE hostel_id = '$id';";
+                    $imagesResult = mysqli_query($conn, $sql);
+                    $totalImages = mysqli_num_rows($imagesResult);
+
+                    for ($var = 0; $var < $totalImages; $var++)
+                    {
+                        $path = mysqli_fetch_assoc($imagesResult)["hostel_pic"];
+                        unlink("../".$path);
+                    }
+
+                    $sql = "DELETE FROM hostels_images WHERE hostel_id = '$id';";
+                    mysqli_query($conn, $sql);
+                    $_SESSION['error_msg'] = "Your hostel has successfully deleted..";
+                }
                 
                 header("Location: ../pages/hostel-admin.php");
             }
