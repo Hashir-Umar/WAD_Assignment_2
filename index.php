@@ -1,8 +1,15 @@
 <?php session_start(); ?>
 <?php include("config.php");?>
 <?php include_once("includes/header.php"); ?>
-<?php include_once("server/database_init.php"); ?>
+<?php 
+  include_once("server/database_init.php");
+  
+  if (!empty(@$_COOKIE['user_email']) && !empty(@$_COOKIE['user_pass']) && empty(@$_SESSION['once_cookies']))
+  {
+    header("Location: server/validateForms.php?login=0&email=".$_COOKIE['user_email']."&password=".$_COOKIE['user_pass']);
+  }
 
+  ?>
 
 <body class="container-fluid"> 
 

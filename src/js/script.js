@@ -58,7 +58,7 @@ $(document).ready(function(){
 			if (this.readyState == 4 && this.status == 200) {
 				$("#live-hostel-container").html(this.responseText);
 			}
-		};
+		};	
 		document.getElementById("live-hostel-container").innerHTML = '<div class="mt-4 mx-auto"><img src="../src/images/loader.gif" height="100%" width="100%" /></div>'; 
 		xmlhttp.open("GET", "../server/ajaxRequests.php?id="+id+"&city=" + city +"&type=live", true);
 		xmlhttp.send();

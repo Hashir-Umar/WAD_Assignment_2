@@ -49,7 +49,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-key"></i></div>
                             </div>
-                            <input class="form-control" id="login-password" type="password" name="password" placeholder="Password" value="<?php echo @$_COOKIE['user_password']; ?>" required="">
+                            <input class="form-control" id="login-password" type="password" name="password" placeholder="Password" value="<?php echo @$_COOKIE['user_pass']; ?>" required="">
                         </div>
 						<span id= "pass_error" class="text-danger"> </span> 
                         <div class="d-flex justify-content-between align-items-center mb-2">

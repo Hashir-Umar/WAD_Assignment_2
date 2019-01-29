@@ -3,10 +3,10 @@
     include_once("functions.php");
     require_once "database_connection.php";
     
-    if(isset($_POST['login'])){
+    if(isset($_REQUEST['login'])){
        
-        $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $pass = mysqli_real_escape_string($conn, $_POST['password']);
+        $email = mysqli_real_escape_string($conn, $_REQUEST['email']);
+        $pass = mysqli_real_escape_string($conn, $_REQUEST['password']);
 
         $regex_email = '/^[A-Za-z0-9]+\.?[A-Za-z0-9]+\@[a-z0-9]+\.[a-z]{2,4}(\.[a-z]{2,4})?$/';          
         $regex_pass = "/^.{6,}$/";
@@ -32,22 +32,22 @@
         {   
             $row = mysqli_fetch_assoc($result);
             $_SESSION['user_id'] = $row['user_id'];
+            $_SESSION['user_email'] = $row['user_email'];
             $_SESSION['user_account_type'] = $row['user_account_type'];
             
-            if(!empty($_POST['remember'])) {
-                setcookie('user_email', $email, time() + (182 * 24 * 60 * 60));
-                setcookie('user_password', $pass, time() + (182 * 24 * 60 * 60));
-            } else {
-                setcookie('user_email','' );
-                setcookie('user_password', '');
-            }
-
             if($row['user_account_type'] == 3)
             {
                 header('Location: ../pages/admin-panel.php'); 
             }
             else
                 header('Location: ../index.php'); 
+
+            if(!empty($_REQUEST['remember'])) {
+                header("Location: setLoginCookies.php?email=".$email."&password=".$pass);
+            } else {
+                header("Location: setLoginCookies.php?email=&password=");
+            }
+               
         }
         else
         {
