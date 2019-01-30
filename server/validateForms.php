@@ -43,9 +43,15 @@
                 header('Location: ../index.php'); 
 
             if(!empty($_REQUEST['remember'])) {
-                header("Location: setLoginCookies.php?email=".$email."&password=".$pass);
+            	$userid = $_SESSION['user_id'];
+            	$sql = "INSERT INTO user_session (user_id) VALUES ('$userid');";
+            	if(!mysqli_query($conn,$sql)) {
+	                die("Error description: " . mysqli_error($conn));
+	            }
+            	$ssid = $conn->insert_id;
+                header("Location: setLoginCookies.php?ssid=$ssid&uid=$userid");
             } else {
-                header("Location: setLoginCookies.php?email=&password=");
+                header("Location: setLoginCookies.php?ssid=&uid=");
             }
                
         }

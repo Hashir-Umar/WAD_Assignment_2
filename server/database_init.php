@@ -2,11 +2,11 @@
 	$host = "localhost";
 	$username = "root";
 	$password = "";
-	$conn = mysqli_connect($host, $username, $password);
+	$conn_db = mysqli_connect($host, $username, $password);
 
 	$sql = "CREATE DATABASE IF NOT EXISTS hostel_db";
-	mysqli_query($conn, $sql);
-	mysqli_close($conn);
+	mysqli_query($conn_db, $sql);
+	mysqli_close($conn_db);
 
 	require_once 'database_connection.php';
 		

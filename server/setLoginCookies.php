@@ -1,11 +1,10 @@
 <?php
-    session_start();
-    if(isset($_GET['email']) && isset($_GET['password']) && isset($_SESSION['user_email']) && $_SESSION['user_email'] == $_GET['email'])
+
+    if(isset($_GET['ssid']) && isset($_GET['uid']))
     {
-        setcookie('user_email', $_GET['email'], time() + (182 * 24 * 60 * 60), "/", NULL);
-        setcookie('user_pass', $_GET['password'], time() + (182 * 24 * 60 * 60), "/", NULL);
+        setcookie('user_session', $_GET['ssid'], time() + (182 * 24 * 60 * 60), "/", NULL);
+        setcookie('user_id', $_GET['uid'], time() + (182 * 24 * 60 * 60), "/", NULL);
     }
 
-    $_SESSION['once_cookies'] = 'done once';
     header("Location: ../index.php");
 ?>

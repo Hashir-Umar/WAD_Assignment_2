@@ -42,14 +42,14 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-envelope"></i></div>
                             </div>
-                            <input class="form-control" id="login-email" type="text" name="email" placeholder ="Enter your Email" onkeyup="if(validateEmail(this.value)) {this.style.borderColor='green'} else {this.style.borderColor='red'}" value="<?php echo @$_COOKIE['user_email']; ?>" required="">
+                            <input class="form-control" id="login-email" type="text" name="email" placeholder ="Enter your Email" onkeyup="if(validateEmail(this.value)) {this.style.borderColor='green'} else {this.style.borderColor='red'}" required="">
                         </div>
 						<span id= "email_error" class="text-danger"> </span> 
                         <div class="input-group mb-2">
                             <div class="input-group-prepend">
                                 <div class="input-group-text"><i class="fas fa-key"></i></div>
                             </div>
-                            <input class="form-control" id="login-password" type="password" name="password" placeholder="Password" onkeyup="if(validatePassword(this.value)) {this.style.borderColor='green'} else {this.style.borderColor='red'}" value="<?php echo @$_COOKIE['user_pass']; ?>" required="">
+                            <input class="form-control" id="login-password" type="password" name="password" placeholder="Password" onkeyup="if(validatePassword(this.value)) {this.style.borderColor='green'} else {this.style.borderColor='red'}" required="">
                         </div>
 						<span id= "pass_error" class="text-danger"> </span> 
                         <div class="d-flex justify-content-between align-items-center mb-2">
