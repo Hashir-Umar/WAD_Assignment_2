@@ -37,7 +37,7 @@
 				exit();
 			}
 
-			$newID = getRecentHostelID($conn, 'hostels');
+			$newID = $conn->insert_id;
 			$sql = "UPDATE hostels_images SET hostel_id = '$newID' WHERE pending_hostel_id = '$pendingID'";
 			mysqli_query($conn, $sql);
 			$sql = "UPDATE hostels_images SET pending_hostel_id = '0' WHERE pending_hostel_id = '$pendingID'";

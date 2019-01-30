@@ -26,6 +26,17 @@
 	if(!mysqli_query($conn, $sql))
 		die("Error description: " . mysqli_error($conn));
 
+	// table to store user login session data for cookies
+	$sql = 'CREATE TABLE IF NOT EXISTS `user_session` (
+			  `session_id` int(11) NOT NULL AUTO_INCREMENT,
+			  `user_id` int(11) NOT NULL,
+			  PRIMARY KEY (`session_id`),
+			  FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
+			);';
+
+	if(!mysqli_query($conn, $sql))
+		die("Error description: " . mysqli_error($conn));
+
 	// table to store user pending users data
 	$sql = 'CREATE TABLE IF NOT EXISTS `pending_users` (
 		`user_id` int(11) NOT NULL AUTO_INCREMENT,
