@@ -51,7 +51,7 @@ section
  }
 
  
- .navbar-expand-md .navbar-nav .nav-link {
+ .navbar-expand-lg .navbar-nav .nav-link {
       padding: 1.4rem;
   }
 
@@ -121,6 +121,10 @@ section
  .margin-left-70
  {
   margin-left: 70px;
+ }
+ .margin-left-10
+ {
+  margin-left: 10px;
  }
  .width-60
  {
@@ -194,7 +198,7 @@ section
 
  #content {
    background: #F9F9F9;
-   padding: 2rem 1rem;
+   padding: 4rem 1rem;
    overflow: hidden;
  }
 
@@ -332,20 +336,11 @@ section
  }
 
 
-@media only screen and (max-width: 768px) {
-  #content {
-    padding-top: 60px;
-  }
-  .navbar-nav {   
+@media only screen and (max-width: 991px) {
+  .navbar 
+  {
     position: relative;
     z-index: 10;
-  }
-
-  .info-text {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    z-index: 1;
   }
   .nav-item {
     width: 100vw;
@@ -387,7 +382,7 @@ input:focus {
 /*contect us*/
 
 .vertical-align {
-	margin-top: 60px;
+	margin-top: 160px;
 }
 
 .input-group
@@ -411,4 +406,13 @@ input:focus {
 .image-wraper img:hover {
   cursor: pointer;
   opacity: .8;
+}
+
+/* logo header */
+.logo-header
+{
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  z-index: 1;
 }

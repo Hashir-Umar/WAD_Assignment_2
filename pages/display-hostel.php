@@ -27,8 +27,10 @@
 <body>
 
     <?php include_once("../includes/navbar.php"); ?>
-
-    <div class="container">
+    <div class="logo-header d-lg-none">
+        <h3>Search for Hostels</h3>
+    </div>
+    <div class="container mt-2">
 
         <br><br>
 

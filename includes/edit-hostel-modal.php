@@ -40,7 +40,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-map-marked-alt"></i></div>
                                     </div>
-                                    <input class="form-control" type="text" name="edit_hostel_address" placeholder ="Address" required>
+                                    <input class="form-control" type="text" onkeyup="if(validateHostelName(this.value)) {this.style.borderColor='green'} else {this.style.borderColor='red'}" name="edit_hostel_address" placeholder ="Address" required>
                                 </div>
                                 <div class="input-group mb-1 mb-md-2">
                                     <div class="input-group-prepend">
@@ -86,7 +86,7 @@
                                     <div class="input-group-prepend">
                                         <div class="input-group-text"><i class="fas fa-file-signature"></i></div>
                                     </div>
-                                    <input class="form-control" type="text" name="edit_hostel_name" placeholder="Hostel name" required>
+                                    <input class="form-control" onkeyup="if(validateHostelName(this.value)) {this.style.borderColor='green'} else {this.style.borderColor='red'}" type="text" name="edit_hostel_name" placeholder="Hostel name" required>
                                 </div>
                                 <div class="input-group mb-1 mb-md-2">
                                     <div class="input-group-prepend">

@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-md">
+<nav class="navbar navbar-expand-lg">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
     <div class="wrapper-navbar">
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <a href="<?php echo $domain.$root_folder ?>"><span class="logo d-none d-md-inline">HOSTEL</span></a>
+        <a href="<?php echo $domain.$root_folder ?>"><span class="logo d-none d-lg-inline">HOSTEL</span></a>
         <ul class="navbar-nav mx-auto">
 
             <li class="nav-item">
@@ -19,7 +19,7 @@
                             echo ' active" ';
                         else
                             echo '"';
-                        echo 'href="'.$domain.$root_folder.'pages/hostel-admin.php"> <i class="fa fa-tasks"></i> &nbsp; Manage Your Hostels </a>';
+                        echo 'href="'.$domain.$root_folder.'pages/hostel-admin.php"> <i class="fa fa-tasks"></i> &nbsp; Manage Hostels </a>';
                         
                     }
                     else if(isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 3)
@@ -38,13 +38,13 @@
 
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if($CURRENT_PAGE == "About") echo " active"; ?>" href="<?php echo $domain.$root_folder."pages/about-us.php"; ?>"><i class="fa fa-user"></i> &nbsp; Meet Our Members</a>
+                <a class="nav-link <?php if($CURRENT_PAGE == "About") echo " active"; ?>" href="<?php echo $domain.$root_folder."pages/about-us.php"; ?>"><i class="fa fa-user"></i> &nbsp; Our Members</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link <?php if($CURRENT_PAGE == "Contact") echo " active"; ?>" href="<?php echo $domain.$root_folder."pages/contact-us.php"; ?>" class="nav-link"> <i class="fas fa-envelope"></i> &nbsp; Contact Us</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if($CURRENT_PAGE == "Search City") echo " active"; ?>" href="<?php echo $domain.$root_folder."pages/display-hostel.php"; ?>" class="nav-link"> <i class="fas fa-search-location"></i> &nbsp; Search for Hostels</a>
+                <a class="nav-link <?php if($CURRENT_PAGE == "Search City") echo " active"; ?>" href="<?php echo $domain.$root_folder."pages/display-hostel.php"; ?>" class="nav-link"> <i class="fas fa-search-location"></i> &nbsp; Search </a>
             </li>
             <?php 
                 if(isset($_SESSION['user_account_type']) &&  $_SESSION['user_account_type'] != 0)

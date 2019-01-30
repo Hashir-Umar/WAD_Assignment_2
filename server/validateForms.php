@@ -83,9 +83,8 @@
             array_push($hostel_image_temp_name, $file_tmp);
         }
         
-        $hostel_name_regex = '/^(?=[a-z]{2})(?=.{4,26})(?=[^.]*\.?[^.]*$)(?=[^_]*_?[^_]*$)[\w.]+$/iD';
+        $hostel_name_regex = "/^[a-zA-Z]+(([',. -][a-zA-Z ]\d*\s?)?[a-zA-Z0-9^\s]*)*[^\s]$/iD";
         $hostel_city_regex = '/Lahore|Islamabad|Karachi|Faisalabad|Peshawar|Quetta/';
-        $hostel_address_regex = '/^[a-zA-Z]([a-zA-Z-]+\s)+\d{1,4}$/';
         
         if($hostel_name == ""
         || $hostel_city == ""
@@ -98,15 +97,11 @@
         }
 
         if (!preg_match($hostel_name_regex,  $hostel_name))  {
-            $_SESSION['error_msg'] = "Hostel name not valid";
+            $_SESSION['error_msg'] = "Hostel name invalid";
             header("Location: ../pages/hostel-admin.php");
         }
         else if (!preg_match($hostel_city_regex,  $hostel_city))  {
-            $_SESSION['error_msg'] = "City name not valid";
-            header("Location: ../pages/hostel-admin.php");
-        }
-        else if (!preg_match($hostel_address_regex,  $hostel_address))  {
-            $_SESSION['error_msg'] = "Address not valid";
+            $_SESSION['error_msg'] = "City name is invalid";
             header("Location: ../pages/hostel-admin.php");
         }
         else {

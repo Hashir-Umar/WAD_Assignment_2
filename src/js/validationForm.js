@@ -39,6 +39,12 @@ function validateName(name)
     return regex_name.test(name);    
 }
 
+function validateHostelName(name)
+{
+    var regex_hostel_name = /^[a-zA-Z]+(([',. -][a-zA-Z ]\d*\s?)?[a-zA-Z0-9^\s]*)*[^\s]$/;
+    return regex_hostel_name.test(name);    
+}
+
 function handleChange(checkbox) {
     var div = document.getElementById("phone_div");
     var phn = document.getElementById("phone");

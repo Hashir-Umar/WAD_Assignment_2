@@ -7,9 +7,7 @@
     {
         $admin_id = $_GET['id'];
         $city = $_GET['city'];
-        $sql = "select * from `hostels` where hostel_owner=".$admin_id;
-        if($city != "")
-            $sql = "select * from `hostels` WHERE hostel_city='$city'";
+        $sql = "select * from `hostels` WHERE hostel_city='".$city."' AND hostel_owner='".$admin_id."'";
         $result = mysqli_query($conn, $sql);
         if(!$result) {
             die("Error description: " . mysqli_error($conn));
@@ -75,10 +73,7 @@
     {
         $admin_id = $_GET['id'];
         $city = $_GET['city'];
-        $sql = "select * from `pending_hostels` where hostel_owner=".$admin_id;
-
-        if($city != "")
-            $sql = "select * from `pending_hostels` WHERE hostel_city='$city'";
+        $sql = "select * from `pending_hostels` WHERE hostel_city='".$city."' AND hostel_owner='".$admin_id."'";
 
         $result = mysqli_query($conn, $sql);
         if(!$result) {
@@ -89,14 +84,6 @@
         $output = "";
         if($count > 0)
         {
-            if($city != "")
-                $sql = "select * from `pending_hostels` WHERE hostel_city='$city'";
-            $result = mysqli_query($conn, $sql);
-            if(!$result) {
-                die("Error description: " . mysqli_error($conn));
-            } 
-            $count = mysqli_num_rows($result);
-            
             while($count)
             {
                 $row = mysqli_fetch_assoc($result);
