@@ -70,22 +70,6 @@
 	if(!mysqli_query($conn, $sql))
 		die("Error description: " . mysqli_error($conn));
 
-	// table to store user data
-	$sql = 'CREATE TABLE IF NOT EXISTS `users_reviews` (
-		`users_reviews_id` int(11) NOT NULL AUTO_INCREMENT,
-		`users_reviews_user_id` int(11) NOT NULL,
-		`users_reviews_hostel_id` int(11) NOT NULL,
-		`users_reviews_review_count` TINYINT NOT NULL DEFAULT 0,
-		PRIMARY KEY (`users_reviews_id`),
-		FOREIGN KEY (`users_reviews_user_id`) REFERENCES `users` (`user_id`),
-		FOREIGN KEY (`users_reviews_hostel_id`) REFERENCES `hostels` (`hostel_id`)
-
-		);';
-
-	if(!mysqli_query($conn, $sql))
-		die("Error description: " . mysqli_error($conn));
-
-
 	//table to store hostel pending data
 	$sql = 'CREATE TABLE IF NOT EXISTS `pending_hostels` (
 		`hostel_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -105,12 +89,11 @@
 
 	//table to store hostels_reviews data
 	$sql = 'CREATE TABLE IF NOT EXISTS `hostels_reviews` (
-		`review_id` int(11) NOT NULL AUTO_INCREMENT,
 		`review_text` varchar(255) NOT NULL,
 		`review_rating` float NOT NULL,
 		`review_owner_id` int(11) NOT NULL,
 		`review_hostel_id` int(11) NOT NULL,
-			PRIMARY KEY (`review_id`),
+			PRIMARY KEY (`review_owner_id`, `review_hostel_id`),
 			FOREIGN KEY (`review_hostel_id`) REFERENCES `hostels` (`hostel_id`),
 			FOREIGN KEY (`review_owner_id`) REFERENCES `users` (`user_id`)
 	  );';
@@ -189,30 +172,12 @@
 			die("Error description: " . mysqli_error($conn));
 		} 
 
-		// adding dummy data to users_reviews table
-		$sql = "INSERT INTO `users_reviews`
-			( users_reviews_id, users_reviews_user_id, users_reviews_hostel_id, users_reviews_review_count)
-			VALUES
-			('1', '1', '1', 1),
-			('2', '1', '2', 0),
-			('3', '1', '3', 0),
-			('4', '2', '1', 0),
-			('5', '2', '2', 0),
-			('6', '2', '3', 0),
-			('7', '3', '1', 1),
-			('8', '3', '2', 0),
-			('9', '3', '3', 0);";
-
-		if(!mysqli_query($conn, $sql)) {
-			die("Error description: " . mysqli_error($conn));
-		} 
-
 		// adding dummy data to hostels_reviews table
 		$sql = "INSERT INTO `hostels_reviews`
-			( review_id, review_text, review_rating, review_hostel_id, review_owner_id)
+			( review_text, review_rating, review_hostel_id, review_owner_id)
 			VALUES
-			('1', 'Its very good', '1.2', '1', '1'), 
-			('2', 'Its very nice', '3.5', '1', '3');";
+			('Its very good', '1.2', '1', '1'), 
+			('Its very nice', '3.5', '1', '3');";
 
 		$result = mysqli_query($conn, $sql);
 		if(!$result) {
