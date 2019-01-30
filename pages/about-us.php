@@ -5,6 +5,10 @@
 <body> 
 
   <?php include_once("../includes/navbar.php"); ?>
+    
+  <div class="logo-header d-lg-none">
+        <h3>Meet our Members</h3>
+    </div>
 
   <section id="content">
     <div class="wrapper">

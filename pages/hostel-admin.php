@@ -25,7 +25,7 @@
 
     <?php include_once("../includes/navbar.php"); ?>
 
-    <div class="wrapper mt-4">
+    <div class="wrapper" style="margin-top: 50px">
         <h1 class="text-center mb-4"><i class="fas fa-tasks"></i> &nbsp; Manage Your Hostels</h1>
         <?php
             if(isset($_SESSION['error_msg']) && !empty($_SESSION['error_msg']))
@@ -68,7 +68,7 @@
                         <option value="Faisalabad" <?php if ($city == "Faisalabad"){echo "selected";} ?> >Faisalabad</option>
                         <option value="Peshawar" <?php if ($city == "Peshawar"){echo "selected";} ?> >Peshawar</option>
                         <option value="Quetta" <?php if ($city == "Quetta"){echo "selected";} ?> >Quetta</option>
-                        <input type="hidden" id="hostel_admin_id" name="hostel_admin_id" value="2">
+                        <input type="hidden" id="hostel_admin_id" name="hostel_admin_id" value="<?php echo $admin_id; ?>">
                     </select>
                 </div>
                 <button id="btn" type="submit" class="btn btn-outline-dark col-2"> Search </button>
@@ -109,13 +109,14 @@
                                         echo '<div class="d-flex justify-content-between align-items-center">';
                                             echo '<div class="d-flex">';
                                                 echo '<div class="image-wraper d-inline-block text-center mb-3">';
-                                                echo '<img onclick=display("'.$row['hostel_id'].'"); src="../'.$row['hostel_img'].'" height="100%" width="100%"/>';
+                                                echo '<img class="mb-2" onclick=display("'.$row['hostel_id'].'"); src="../'.$row['hostel_img'].'" height="100%" width="100%"/>';
                                                     echo '<div> <strong>'.$row['hostel_name'].'</strong></div>';
                                                 echo '</div>';
                                                 echo '<div class="hostel-details ml-2">';
                                                     echo '<strong>City: </strong> <span>'.$row['hostel_city'].'</span> <br/>';
                                                     echo '<strong>Address: </strong> <span>'.$row['hostel_address'].'</span> <br/>';
-                                                    echo '<strong>Rooms Availible: </strong> <span>'.$row['hostel_rooms'].'</span> <br/>';
+                                                    echo '<strong>Rooms: </strong> <span>'.$row['hostel_rooms'].'</span> <br/>';
+                                                    echo '<strong>Extras: </strong> <span>'.$row['hostel_extras'].'</span> <br/>';
                                                 echo '</div>';
                                             echo '</div>';
                                             echo '<div class="button-section d-flex flex-column">';
@@ -182,13 +183,14 @@
                                         echo '<div class="d-flex justify-content-between align-items-center">';
                                             echo '<div class="d-flex">';
                                                 echo '<div class="image-wraper d-inline-block text-center mb-3">';
-                                                echo '<img src="../'.$row['hostel_img'].'" height="100%" width="100%"/>';
+                                                echo '<img class="mb-1" src="../'.$row['hostel_img'].'" height="100%" width="100%"/>';
                                                     echo '<div> <strong>'.$row['hostel_name'].'</strong></div>';
                                                 echo '</div>';
                                                 echo '<div class="hostel-details ml-2">';
                                                     echo '<strong>City: </strong> <span>'.$row['hostel_city'].'</span> <br/>';
                                                     echo '<strong>Address: </strong> <span>'.$row['hostel_address'].'</span> <br/>';
-                                                    echo '<strong>Rooms Availible: </strong> <span>'.$row['hostel_rooms'].'</span> <br/>';
+                                                    echo '<strong>Rooms: </strong> <span>'.$row['hostel_rooms'].'</span> <br/>';
+                                                    echo '<strong>Extras: </strong> <span>'.$row['hostel_extras'].'</span> <br/>';
                                                 echo '</div>';
                                             echo '</div>';
                                             echo '<div class="button-section d-flex flex-column">';
@@ -247,7 +249,7 @@
                                         <div class="input-group-prepend">
                                             <div class="input-group-text"><i class="fas fa-file-signature"></i></div>
                                         </div>
-                                        <input class="form-control" type="text" name="hostel_name" placeholder="Hostel name" required>
+                                        <input class="form-control" onkeyup="if(validateHostelName(this.value)) {this.style.borderColor='green'} else {this.style.borderColor='red'}" type="text" name="hostel_name" placeholder="Hostel name" required>
                                     </div>
                                     <div class="input-group mb-1 mb-md-2">
                                         <div class="input-group-prepend">

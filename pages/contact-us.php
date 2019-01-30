@@ -5,11 +5,9 @@
 <body> 
 
     <?php include_once("../includes/navbar.php"); ?>
-
-    <div class="info-text d-md-none">
-      <h4>Contact Us</h4>
+    <div class="logo-header d-lg-none">
+        <h3>Contact Us</h3>
     </div>
-
     <div class="container">
       <div class="vertical-align">
         <div class="col-sm-12 col-md-8 col-lg-6 mx-auto">

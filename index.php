@@ -13,12 +13,10 @@
 
 <body class="container-fluid"> 
 
-    <div class="info-text d-md-none">
-      <h4>Home</h4>
-    </div>
-    
     <?php include_once("includes/navbar.php"); ?>
-
+    <div class="logo-header d-lg-none">
+        <h3 class="text-light">Home</h3>
+    </div>
     <div class="top-banner d-none d-md-block height-500 line-h-250">
       <div class="row">
         <div class="col-10 offset-1">
