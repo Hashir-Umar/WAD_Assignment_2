@@ -3,7 +3,28 @@
     include_once("functions.php");
     require_once "database_connection.php";
     
-    if(isset($_REQUEST['login'])){
+    if(isset($_POST['rate']))
+    {
+        $text = $_POST['review_text'];
+        $user_id = $_POST['user_id'];
+        $hostel_id = $_POST['hostel_id'];
+        $rating = $_POST['rating'];
+        
+        $insertQuery = "insert into `hostels_reviews` (review_text, review_rating, review_hostel_id, review_owner_id)
+        values ('$text','$rating','$hostel_id', '$user_id');";
+        $result = mysqli_query($conn,$insertQuery);
+		
+		if(!$result)
+           die("Error description: " . mysqli_error($conn));
+        
+        $updateQuery = "update `users_reviews` set users_reviews_review_count = '1' where users_reviews_user_id = '$user_id' AND users_reviews_hostel_id = '$hostel_id'";
+        $result = mysqli_query($conn,$updateQuery);
+        if(!$result)
+            die("Error description: " . mysqli_error($conn));
+    
+        header("Location: ../pages/display-hostel-data.php?hostel_id=".$hostel_id);
+    }
+    else if(isset($_REQUEST['login'])){
        
         $email = mysqli_real_escape_string($conn, $_REQUEST['email']);
         $pass = mysqli_real_escape_string($conn, $_REQUEST['password']);
@@ -238,6 +259,6 @@
         }
         else
             echo "1";
-    }
+    } 
 
 ?>
