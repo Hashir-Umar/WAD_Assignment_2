@@ -86,10 +86,15 @@
 
 	function getReviewCount($conn, $user_id, $hostel_id)
 	{
-		$sql = "SELECT users_reviews_review_count FROM users_reviews WHERE users_reviews_user_id='$user_id' AND users_reviews_hostel_id='$hostel_id'";
-	    $result = mysqli_fetch_assoc(mysqli_query($conn, $sql))['users_reviews_review_count'];
-
-	    return $result;
+		$sql = "SELECT * FROM hostels_reviews WHERE review_owner_id='$user_id' AND review_hostel_id='$hostel_id'";
+		$result = mysqli_query($conn, $sql);
+		$count = mysqli_num_rows($result);
+		if(!$result) {
+			die("Error description: " . mysqli_error($conn));
+		}
+		if($count == 0)
+			return 0;
+		return 1;
 	}
 
 	function getReviewOwner($conn, $id)

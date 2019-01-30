@@ -17,11 +17,6 @@
 		if(!$result)
            die("Error description: " . mysqli_error($conn));
         
-        $updateQuery = "update `users_reviews` set users_reviews_review_count = '1' where users_reviews_user_id = '$user_id' AND users_reviews_hostel_id = '$hostel_id'";
-        $result = mysqli_query($conn,$updateQuery);
-        if(!$result)
-            die("Error description: " . mysqli_error($conn));
-    
         header("Location: ../pages/display-hostel-data.php?hostel_id=".$hostel_id);
     }
     else if(isset($_REQUEST['login'])){
