@@ -1,5 +1,30 @@
 <?php
 
+	function recalRating($conn, $hostelID)    // function to recalculate the rating of a hoste;
+	{
+		$sql = "SELECT review_rating FROM hostels_reviews WHERE review_hostel_id = '$hostelID';";
+		$result = mysqli_query($conn, $sql);
+		$count = mysqli_num_rows($result);
+		$final = 0;
+		if ($count > 0)
+		{
+			for ($var = 0; $var < $count; $var++)
+			{
+				$assoc = mysqli_fetch_assoc($result);
+				$final += $assoc['review_rating'];
+			}
+
+			$final /= $count;
+		}
+
+		$final = round($final, 2);
+
+		$sql = "UPDATE hostels SET hostel_rating='$final' WHERE hostel_id='$hostelID';";
+		if(!mysqli_query($conn,$sql)) {
+                die("Error description: " . mysqli_error($conn));
+            }
+	}
+
 	function getStarsString($rating, $total)
 	{
 		$stars = "";
