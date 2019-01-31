@@ -112,25 +112,6 @@
         <div class = "row">
             <div class="font-20 text-block padding-10 col-12"> Reviews </div>
             <div class="col-12">
-                <table class="table table-striped">
-                    <?php
-                        $query = "SELECT * FROM hostels_reviews where review_hostel_id='$id'";
-                        $query_result = mysqli_query($conn, $query);
-                        if(!$query_result)
-		                    die("Error description: " . mysqli_error($conn));
-                        $rows_count = mysqli_num_rows($query_result);
-                    
-                        for($i = 0; $i < $rows_count; $i++)
-                        {
-                            $row = mysqli_fetch_assoc($query_result);
-                            
-                            echo '<tr>';
-                                echo '<th>'.getReviewOwner($conn, $row['review_owner_id']).'<div class="font-12">Rating: '.$row['review_rating'].'</div></th>';
-                                echo '<td> '.$row['review_text'].' </td>';
-                            echo '</tr>';
-                        }
-                    ?>
-                </table>
                 <?php
                     if(isset($_SESSION['user_id']) && isset($_SESSION['user_account_type']) && $_SESSION['user_account_type'] == 1)
                     {
@@ -162,6 +143,26 @@
                         }
                     }
                 ?>          
+                <table class="table table-striped">
+                    <?php
+                        $query = "SELECT * FROM hostels_reviews where review_hostel_id='$id'";
+                        $query_result = mysqli_query($conn, $query);
+                        if(!$query_result)
+		                    die("Error description: " . mysqli_error($conn));
+                        $rows_count = mysqli_num_rows($query_result);
+                    
+                        for($i = 0; $i < $rows_count; $i++)
+                        {
+                            $row = mysqli_fetch_assoc($query_result);
+                            
+                            echo '<tr>';
+                                echo '<th>'.getReviewOwner($conn, $row['review_owner_id']).'<div class="font-12">Rating: '.$row['review_rating'].'</div></th>';
+                                echo '<td> '.$row['review_text'].' </td>';
+                            echo '</tr>';
+                        }
+                    ?>
+                </table>
+                
             </div>
         </div>
 

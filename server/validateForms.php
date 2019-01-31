@@ -16,7 +16,7 @@
 		
 		if(!$result)
            die("Error description: " . mysqli_error($conn));
-        
+        recalRating($conn, $hostel_id);
         header("Location: ../pages/display-hostel-data.php?hostel_id=".$hostel_id);
     }
     else if(isset($_REQUEST['login'])){

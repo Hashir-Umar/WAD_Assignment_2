@@ -176,13 +176,16 @@
 		$sql = "INSERT INTO `hostels_reviews`
 			( review_text, review_rating, review_hostel_id, review_owner_id)
 			VALUES
-			('Its very good', '1.2', '1', '1'), 
-			('Its very nice', '3.5', '1', '3');";
+			('Its very good', '5', '1', '1'), 
+			('Its very nice', '4', '1', '3');";
 
 		$result = mysqli_query($conn, $sql);
 		if(!$result) {
 			die("Error description: " . mysqli_error($conn));
 		} 
+
+		//calculating review rating
+		recalRating($conn, 1);
 
 		// adding dummy data to pending hostel table
 		$sql = "INSERT INTO `pending_hostels`

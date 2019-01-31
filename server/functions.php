@@ -1,6 +1,6 @@
 <?php
 
-	function recalRating($conn, $hostelID)    // function to recalculate the rating of a hoste;
+	function recalRating($conn, $hostelID)    // function to recalculate the rating of a hostel;
 	{
 		$sql = "SELECT review_rating FROM hostels_reviews WHERE review_hostel_id = '$hostelID';";
 		$result = mysqli_query($conn, $sql);
