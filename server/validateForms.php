@@ -24,7 +24,7 @@
         $email = mysqli_real_escape_string($conn, $_REQUEST['email']);
         $pass = mysqli_real_escape_string($conn, $_REQUEST['password']);
 
-        $regex_email = '/^[A-Za-z0-9]+\.?[A-Za-z0-9]+\@[a-z0-9]+\.[a-z]{2,4}(\.[a-z]{2,4})?$/';          
+        $regex_email = '/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/';
         $regex_pass = "/^.{6,}$/";
 
         if(!preg_match($regex_email, $email))
@@ -41,12 +41,12 @@
             die();
         }
 
-        $sql = "SELECT  * FROM `users` WHERE user_email = '$email' AND  user_password = '$pass'";
+        $sql = "SELECT  * FROM `users` WHERE user_email = '$email';";
         $result = $conn->query($sql);
+        $row = mysqli_fetch_assoc($result);
 
-        if($result->num_rows > 0)
+        if($result->num_rows > 0 && password_verify($pass, $row['user_password']))
         {   
-            $row = mysqli_fetch_assoc($result);
             $_SESSION['user_id'] = $row['user_id'];
             $_SESSION['user_email'] = $row['user_email'];
             $_SESSION['user_account_type'] = $row['user_account_type'];
@@ -73,7 +73,7 @@
         }
         else
         {
-            $_SESSION['error_msg'] = "*Email and Password does not match";
+            $_SESSION['error_msg'] = "*Email and Password does not match!";
             header('Location: ../pages/login.php');
             die();
         }

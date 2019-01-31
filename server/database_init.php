@@ -136,12 +136,12 @@
 		$sql = "INSERT INTO `users`
 			( user_email, user_password, user_account_type )
 			VALUES
-			('user1@test.com', '123456', 1), 
-			('user2@test.com', '123456', 1), 
-			('user3@test.com', '123456', 1),
-			('admin1@test.com', '123456', 2),
-			('admin2@test.com', '123456', 2),
-			('owner@test.com', '123456', 3);";
+			('user1@test.com', '\$2y\$10\$fTrvwXrF0LqaYV9KNLJxiuij2.8NhmZ9pSeS8oVnsoFRfWhrRXegG', 1), 
+			('user2@test.com', '\$2y\$10\$fTrvwXrF0LqaYV9KNLJxiuij2.8NhmZ9pSeS8oVnsoFRfWhrRXegG', 1), 
+			('user3@test.com', '\$2y\$10\$fTrvwXrF0LqaYV9KNLJxiuij2.8NhmZ9pSeS8oVnsoFRfWhrRXegG', 1),
+			('admin1@test.com', '\$2y\$10\$fTrvwXrF0LqaYV9KNLJxiuij2.8NhmZ9pSeS8oVnsoFRfWhrRXegG', 2),
+			('admin2@test.com', '\$2y\$10\$fTrvwXrF0LqaYV9KNLJxiuij2.8NhmZ9pSeS8oVnsoFRfWhrRXegG', 2),
+			('owner@test.com', '\$2y\$10\$fTrvwXrF0LqaYV9KNLJxiuij2.8NhmZ9pSeS8oVnsoFRfWhrRXegG', 3);";
 
 		if(!mysqli_query($conn, $sql)) {
 			die("Error description: " . mysqli_error($conn));
@@ -151,9 +151,9 @@
 		$sql = "INSERT INTO `pending_users`
 			( user_email, user_password, user_account_type )
 			VALUES
-			('admin3@test.com', '123456', 2),
-			('admin4@test.com', '123456', 2),
-			('admin5@test.com', '123456', 2);";
+			('admin3@test.com', '\$2y\$10\$fTrvwXrF0LqaYV9KNLJxiuij2.8NhmZ9pSeS8oVnsoFRfWhrRXegG', 2),
+			('admin4@test.com', '\$2y\$10\$fTrvwXrF0LqaYV9KNLJxiuij2.8NhmZ9pSeS8oVnsoFRfWhrRXegG', 2),
+			('admin5@test.com', '\$2y\$10\$fTrvwXrF0LqaYV9KNLJxiuij2.8NhmZ9pSeS8oVnsoFRfWhrRXegG', 2);";
 
 		if(!mysqli_query($conn, $sql)) {
 			die("Error description: " . mysqli_error($conn));
@@ -220,6 +220,4 @@
 				die("Error description: " . mysqli_error($conn));
 			} 
 	}
-
-	mysqli_close($conn);
 ?>
