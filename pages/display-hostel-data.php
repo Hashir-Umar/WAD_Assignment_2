@@ -167,12 +167,6 @@
         </div>
 
      </div>
-
-     <footer>
-        <div class='container text-center py-2 py-md-4'>
-            All Rights Reserved. <a href='#' class="text-muted"> hostel.info </a>  &copy; 2018
-        </div>
-    </footer>
     
 
 
