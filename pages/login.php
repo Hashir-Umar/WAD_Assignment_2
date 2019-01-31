@@ -59,7 +59,6 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between">
                         <div> <a href="<?php echo $domain.$root_folder."pages/signup.php"; ?>"> <i class="fas fa-sign-in-alt"></i> Create a free Account</a></div>                  
-                        <div class="mb-2"> <a href="<?php echo $domain.$root_folder."pages/forgot-password.php"; ?>"> <i class="fas fa-key"></i> Forgot your password?</a></div>
                     </div>
                 </div>
             </div>    
